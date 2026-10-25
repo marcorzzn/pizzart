@@ -33,7 +33,8 @@ impl StableId {
         let contatore = CONTATORE.fetch_add(1, Ordering::Relaxed);
         let indirizzo = &CONTATORE as *const AtomicU64 as u64;
 
-        let mut seme = nanos ^ (contatore.wrapping_mul(0x9E37_79B9_7F4A_7C15)) ^ indirizzo.rotate_left(17);
+        let mut seme =
+            nanos ^ (contatore.wrapping_mul(0x9E37_79B9_7F4A_7C15)) ^ indirizzo.rotate_left(17);
         if seme == 0 {
             seme = 0xDEAD_BEEF_CAFE_BABE;
         }
@@ -123,7 +124,11 @@ mod tests {
         let mut ordinati = ids.clone();
         ordinati.sort();
         ordinati.dedup();
-        assert_eq!(ordinati.len(), ids.len(), "1000 id devono essere tutti diversi");
+        assert_eq!(
+            ordinati.len(),
+            ids.len(),
+            "1000 id devono essere tutti diversi"
+        );
     }
 
     #[test]
@@ -136,7 +141,10 @@ mod tests {
         assert_eq!(byte[18], b'-');
         assert_eq!(byte[23], b'-');
         assert_eq!(byte[14], b'4', "versione 4");
-        assert!(matches!(byte[19], b'8' | b'9' | b'a' | b'b'), "variante RFC 4122");
+        assert!(
+            matches!(byte[19], b'8' | b'9' | b'a' | b'b'),
+            "variante RFC 4122"
+        );
     }
 
     #[test]

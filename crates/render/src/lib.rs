@@ -29,10 +29,10 @@ use std::task::{Context, Poll, Wake, Waker};
 use std::thread::{self, Thread};
 
 use bytemuck::{Pod, Zeroable};
-use pizzart_core::{BlendMode, Document, Layer, Mask, Node};
 /// Nome locale del buffer ritagliato: il tipo vive nel core, così il renderer
 /// non deve dipendere dal motore di disegno (lo stesso tipo servirà agli effetti).
 use pizzart_core::PlacedImage as StrokeBuffer;
+use pizzart_core::{BlendMode, Document, Layer, Mask, Node};
 
 /// Backend wgpu selezionato per questa piattaforma.
 ///
@@ -330,8 +330,8 @@ impl HeadlessRenderer {
 
         let mut effect_pipelines = Vec::new();
         for entry_point in EFFECT_ENTRY_POINTS {
-            effect_pipelines.push(device.create_render_pipeline(
-                &wgpu::RenderPipelineDescriptor {
+            effect_pipelines.push(
+                device.create_render_pipeline(&wgpu::RenderPipelineDescriptor {
                     label: Some(entry_point),
                     layout: Some(&effects_layout),
                     vertex: wgpu::VertexState {
@@ -356,8 +356,8 @@ impl HeadlessRenderer {
                     multisample: wgpu::MultisampleState::default(),
                     multiview: None,
                     cache: None,
-                },
-            ));
+                }),
+            );
         }
 
         // Pass di combinazione: come sopra, più l'originale (binding 3).
@@ -1143,7 +1143,6 @@ fn invert_matrix(layer: &Layer) -> [[f32; 4]; 4] {
     [c(0), c(1), c(2), c(3)]
 }
 
-
 /// Un tratto caricato in GPU, pronto per essere composto sopra il documento.
 pub struct StrokeLayer {
     pub texture: wgpu::Texture,
@@ -1282,10 +1281,7 @@ impl EffectShader {
         const POINT_BRIGHTNESS: [PassOp; 1] = [PassOp::Single(PIXEL_BRIGHTNESS)];
         const POINT_CONTRAST: [PassOp; 1] = [PassOp::Single(PIXEL_CONTRAST)];
         const POINT_SATURATE: [PassOp; 1] = [PassOp::Single(PIXEL_SATURATE)];
-        const BLUR: [PassOp; 2] = [
-            PassOp::Single(PIXEL_BLUR_H),
-            PassOp::Single(PIXEL_BLUR_V),
-        ];
+        const BLUR: [PassOp; 2] = [PassOp::Single(PIXEL_BLUR_H), PassOp::Single(PIXEL_BLUR_V)];
         const SHARPEN: [PassOp; 3] = [
             PassOp::Single(PIXEL_BLUR_H),
             PassOp::Single(PIXEL_BLUR_V),
@@ -1393,12 +1389,7 @@ impl Effect {
     /// Bagliore: aggiunge con Screen la parte di sfocato sopra la soglia.
     pub fn glow(threshold: f32, intensity: f32, radius: f32) -> Self {
         Self {
-            params: [
-                threshold.clamp(0.0, 1.0),
-                intensity.max(0.0),
-                0.0,
-                0.0,
-            ],
+            params: [threshold.clamp(0.0, 1.0), intensity.max(0.0), 0.0, 0.0],
             radius: radius.clamp(0.5, 16.0),
             ..Self::simple("glow", EffectShader::Glow, 0.0)
         }
@@ -1765,9 +1756,7 @@ mod tests {
             canvas_w: 8,
             canvas_h: 8,
         };
-        assert!(renderer
-            .upload_stroke(&ok, BlendMode::Normal, 1.0)
-            .is_ok());
+        assert!(renderer.upload_stroke(&ok, BlendMode::Normal, 1.0).is_ok());
 
         // dimensione dichiarata e buffer non coincidono (buffer non vuoto)
         let incoerente = PlacedImage {
@@ -1812,7 +1801,10 @@ mod tests {
         stroke.render_over(&mut cpu, w, h);
 
         let tile = stroke.render_bbox(w, h);
-        assert!(!tile.is_empty() && tile.width < w, "il tile deve essere più piccolo della tela");
+        assert!(
+            !tile.is_empty() && tile.width < w,
+            "il tile deve essere più piccolo della tela"
+        );
         let layer = renderer
             .upload_stroke(&tile, BlendMode::Multiply, 1.0)
             .expect("upload");
@@ -1849,8 +1841,16 @@ mod tests {
         stroke.add(Point::new(100.0, 70.0));
 
         let tile = stroke.render_bbox(w, h);
-        assert!(tile.offset_x > 80, "offset_x atteso in basso a destra: {}", tile.offset_x);
-        assert!(tile.offset_y > 50, "offset_y atteso in basso a destra: {}", tile.offset_y);
+        assert!(
+            tile.offset_x > 80,
+            "offset_x atteso in basso a destra: {}",
+            tile.offset_x
+        );
+        assert!(
+            tile.offset_y > 50,
+            "offset_y atteso in basso a destra: {}",
+            tile.offset_y
+        );
 
         let layer = renderer
             .upload_stroke(&tile, BlendMode::Normal, 1.0)
@@ -1861,7 +1861,11 @@ mod tests {
 
         // il centro del timbro è dove l'abbiamo messo
         let centro = img.pixel(100, 70).expect("pixel");
-        assert_eq!(centro, [255, 0, 0, 255], "il tratto deve stare in basso a destra");
+        assert_eq!(
+            centro,
+            [255, 0, 0, 255],
+            "il tratto deve stare in basso a destra"
+        );
 
         // e in alto a sinistra non c'è nulla
         assert_eq!(
@@ -2053,7 +2057,9 @@ mod tests {
             Effect::brightness(0.1),
             Effect::saturate(0.3),
         ];
-        let indietro = renderer.apply_effects(&base, &inversa).expect("catena inversa");
+        let indietro = renderer
+            .apply_effects(&base, &inversa)
+            .expect("catena inversa");
 
         // brightness poi contrast: 0.5 -> 0.6 -> 0.62
         // contrast poi brightness: 0.5 -> 0.5 -> 0.6
@@ -2063,7 +2069,11 @@ mod tests {
             avanti.rgba[0],
             indietro.rgba[0]
         );
-        assert!((avanti.rgba[0] as i32 - 158).abs() <= 2, "atteso ~158, dato {}", avanti.rgba[0]);
+        assert!(
+            (avanti.rgba[0] as i32 - 158).abs() <= 2,
+            "atteso ~158, dato {}",
+            avanti.rgba[0]
+        );
     }
 
     #[test]
@@ -2175,7 +2185,10 @@ mod tests {
         let cpu_out = cpu::apply_effects(&base, &catena);
         let gpu_out = renderer.apply_effects(&base, &catena).expect("gpu");
         let (diff, at) = max_diff(&cpu_out.rgba, &gpu_out.rgba);
-        println!("catena di {} effetti: differenza max {diff}/255", catena.len());
+        println!(
+            "catena di {} effetti: differenza max {diff}/255",
+            catena.len()
+        );
         assert!(
             diff <= 5,
             "catena: {diff}/255 al byte {at} (atteso ≤5 per 4 pass)"
@@ -2229,7 +2242,10 @@ mod tests {
         for d in 1..=5 {
             let destra = luminanza(&out, c + d, c);
             let sinistra = luminanza(&out, c - d, c);
-            assert!((destra - sinistra).abs() <= 1, "asimmetria a {d}: {destra} vs {sinistra}");
+            assert!(
+                (destra - sinistra).abs() <= 1,
+                "asimmetria a {d}: {destra} vs {sinistra}"
+            );
             let sotto = luminanza(&out, c, c + d);
             let sopra = luminanza(&out, c, c - d);
             assert!((sotto - sopra).abs() <= 1, "asimmetria verticale a {d}");
@@ -2257,10 +2273,7 @@ mod tests {
             let gpu_out = renderer.apply_effects(&base, &fx).expect("gpu");
             let (diff, at) = max_diff(&cpu_out.rgba, &gpu_out.rgba);
             println!("blur raggio {raggio}: differenza max {diff}/255");
-            assert!(
-                diff <= 3,
-                "blur raggio {raggio}: {diff}/255 al byte {at}"
-            );
+            assert!(diff <= 3, "blur raggio {raggio}: {diff}/255 al byte {at}");
         }
     }
 
@@ -2596,9 +2609,12 @@ mod tests {
 
         // in un angolo lontano dal testo: il fondo bianco
         let angolo = img.pixel(w - 2, h - 2).expect("pixel");
-        assert_eq!(angolo, [250, 250, 250, 255], "fuori dal testo resta il fondo");
+        assert_eq!(
+            angolo,
+            [250, 250, 250, 255],
+            "fuori dal testo resta il fondo"
+        );
     }
-
 
     use pizzart_text::{FontRegistry, FontSource, Text, TextStyle};
 
@@ -2865,7 +2881,8 @@ mod tests {
     }
 
     #[test]
-    fn catena_blur_sharpen_glow() {        let Some(renderer) = HeadlessRenderer::new() else {
+    fn catena_blur_sharpen_glow() {
+        let Some(renderer) = HeadlessRenderer::new() else {
             eprintln!("nessuna GPU disponibile: test saltato");
             return;
         };

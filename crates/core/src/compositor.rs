@@ -282,7 +282,10 @@ mod tests {
             doc.composite()
         };
         let con = doc_con_maschera(Mask::full(4, 4)).composite();
-        assert_eq!(con, senza, "una maschera piena deve essere trasparente al risultato");
+        assert_eq!(
+            con, senza,
+            "una maschera piena deve essere trasparente al risultato"
+        );
     }
 
     #[test]

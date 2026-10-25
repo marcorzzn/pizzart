@@ -82,5 +82,8 @@ fn main() {
         image::ColorType::Rgba8,
     )
     .expect("scrittura PNG");
-    println!("scritto blend_matrix.png ({}x{}), {rows} modi", img.width, img.height);
+    println!(
+        "scritto blend_matrix.png ({}x{}), {rows} modi",
+        img.width, img.height
+    );
 }

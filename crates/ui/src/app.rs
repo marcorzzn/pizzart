@@ -127,14 +127,20 @@ impl PizzartApp {
                 });
                 ui.menu_button("Modifica", |ui| {
                     if ui
-                        .add_enabled(self.editor.can_undo(), egui::Button::new("Annulla  (Ctrl+Z)"))
+                        .add_enabled(
+                            self.editor.can_undo(),
+                            egui::Button::new("Annulla  (Ctrl+Z)"),
+                        )
                         .clicked()
                     {
                         ui.close_menu();
                         self.editor.undo();
                     }
                     if ui
-                        .add_enabled(self.editor.can_redo(), egui::Button::new("Ripeti  (Ctrl+Y)"))
+                        .add_enabled(
+                            self.editor.can_redo(),
+                            egui::Button::new("Ripeti  (Ctrl+Y)"),
+                        )
                         .clicked()
                     {
                         ui.close_menu();
@@ -173,7 +179,11 @@ impl PizzartApp {
                     }
                 }
                 ui.separator();
-                ui.label(RichText::new(tools::descrizione(self.editor.tool)).small().weak());
+                ui.label(
+                    RichText::new(tools::descrizione(self.editor.tool))
+                        .small()
+                        .weak(),
+                );
             });
         });
     }
@@ -333,7 +343,10 @@ impl PizzartApp {
                 let (x0, y0, w, h) = crate::state::normalizza(x, y, w, h);
                 let colore = canvas::SELEZIONE_IN_CORSO;
                 let min = rect.min
-                    + egui::vec2(x0 / doc_w as f32 * rect.width(), y0 / doc_h as f32 * rect.height());
+                    + egui::vec2(
+                        x0 / doc_w as f32 * rect.width(),
+                        y0 / doc_h as f32 * rect.height(),
+                    );
                 let size = egui::vec2(
                     w / doc_w as f32 * rect.width(),
                     h / doc_h as f32 * rect.height(),
@@ -513,7 +526,11 @@ impl eframe::App for PizzartApp {
 
 /// Aggiunge l'estensione se manca.
 fn con_estensione(path: PathBuf, ext: &str) -> PathBuf {
-    if path.extension().map(|e| e.eq_ignore_ascii_case(ext)).unwrap_or(false) {
+    if path
+        .extension()
+        .map(|e| e.eq_ignore_ascii_case(ext))
+        .unwrap_or(false)
+    {
         path
     } else {
         let mut p = path.clone();

@@ -63,7 +63,11 @@ fn cambiare_strumento_a_meta_tratto_chiude_lo_stroke() {
         editor.stroke_points.is_empty(),
         "i punti non devono restare orfani"
     );
-    assert_eq!(editor.doc.layer_count(), 1, "il tratto è diventato un layer");
+    assert_eq!(
+        editor.doc.layer_count(),
+        1,
+        "il tratto è diventato un layer"
+    );
 }
 
 // ---------------------------------------------------------------------------
@@ -73,7 +77,9 @@ fn cambiare_strumento_a_meta_tratto_chiude_lo_stroke() {
 #[test]
 fn undo_durante_drag_opacita_lascia_stato_coerente() {
     let mut editor = Editor::new(16, 16);
-    let id = editor.doc.add_layer(Layer::filled("a", 16, 16, [10, 10, 10, 255]));
+    let id = editor
+        .doc
+        .add_layer(Layer::filled("a", 16, 16, [10, 10, 10, 255]));
 
     editor.begin_opacity_drag(id);
     editor.update_opacity_drag(0.5);
@@ -117,7 +123,10 @@ fn reorder_dentro_un_gruppo_funziona() {
         .map(|n| n.name().to_string())
         .collect();
     assert_eq!(nomi, vec!["b", "a"], "ordine invertito dentro il gruppo");
-    assert!(editor.doc.root[0].as_group().is_some(), "il gruppo resta al suo posto");
+    assert!(
+        editor.doc.root[0].as_group().is_some(),
+        "il gruppo resta al suo posto"
+    );
 }
 
 // ---------------------------------------------------------------------------
@@ -165,7 +174,9 @@ fn apertura_non_blocca_il_thread_ui() {
         }
         std::thread::sleep(std::time::Duration::from_millis(10));
     }
-    esito.expect("il worker deve consegnare un risultato").expect("decodifica ok");
+    esito
+        .expect("il worker deve consegnare un risultato")
+        .expect("decodifica ok");
     assert!(!editor.is_loading());
     assert_eq!(editor.doc.layer_count(), 1);
     assert_eq!((editor.doc.width, editor.doc.height), (800, 600));
@@ -190,8 +201,14 @@ fn zoom_centrato_sul_cursore_tiene_il_punto_fermo() {
     let dopo = canvas::rect_documento(area, doc_w, doc_h, zoom, egui::vec2(pan2.0, pan2.1));
     let doc_dopo = canvas::schermo_a_documento(cursore, dopo, doc_w, doc_h).expect("dentro");
 
-    assert!((doc_prima.0 - doc_dopo.0).abs() < 0.5, "x: {doc_prima:?} vs {doc_dopo:?}");
-    assert!((doc_prima.1 - doc_dopo.1).abs() < 0.5, "y: {doc_prima:?} vs {doc_dopo:?}");
+    assert!(
+        (doc_prima.0 - doc_dopo.0).abs() < 0.5,
+        "x: {doc_prima:?} vs {doc_dopo:?}"
+    );
+    assert!(
+        (doc_prima.1 - doc_dopo.1).abs() < 0.5,
+        "y: {doc_prima:?} vs {doc_dopo:?}"
+    );
 }
 
 #[test]
@@ -208,7 +225,10 @@ fn mappatura_schermo_documento_roundtrip() {
     let area = egui::Rect::from_min_size(egui::pos2(10.0, 20.0), egui::vec2(600.0, 400.0));
     let rect = canvas::rect_documento(area, 200, 100, 1.5, egui::vec2(5.0, 5.0));
     for (u, v) in [(0.0, 0.0), (0.5, 0.5), (0.999, 0.999)] {
-        let punto = egui::pos2(rect.left() + u * rect.width(), rect.top() + v * rect.height());
+        let punto = egui::pos2(
+            rect.left() + u * rect.width(),
+            rect.top() + v * rect.height(),
+        );
         let (dx, dy) = canvas::schermo_a_documento(punto, rect, 200, 100).expect("dentro");
         assert!((dx / 200.0 - u).abs() < 0.01, "u: {u} -> {dx}");
         assert!((dy / 100.0 - v).abs() < 0.01, "v: {v} -> {dy}");

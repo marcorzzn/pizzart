@@ -169,7 +169,9 @@ impl FontRegistry {
             });
         }
         let Some(&face_id) = nuovi.first() else {
-            return Err(FontError::Parse("nessun volto riconosciuto nel file".into()));
+            return Err(FontError::Parse(
+                "nessun volto riconosciuto nel file".into(),
+            ));
         };
 
         let face = self
@@ -200,10 +202,7 @@ impl FontRegistry {
                     family,
                     post_script_name: face.post_script_name.clone(),
                     weight: face.weight.0,
-                    italic: matches!(
-                        face.style,
-                        fontdb::Style::Italic | fontdb::Style::Oblique
-                    ),
+                    italic: matches!(face.style, fontdb::Style::Italic | fontdb::Style::Oblique),
                     source,
                 },
             ),
@@ -301,9 +300,7 @@ mod tests {
             "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
             "/System/Library/Fonts/Helvetica.ttc",
         ];
-        candidates
-            .iter()
-            .find_map(|p| std::fs::read(p).ok())
+        candidates.iter().find_map(|p| std::fs::read(p).ok())
     }
 
     #[test]
@@ -326,7 +323,10 @@ mod tests {
             .add(b"questo non e' un font".to_vec(), FontSource::Memory)
             .unwrap_err();
         assert_eq!(err, FontError::InvalidMagic);
-        assert!(reg.is_empty(), "un font rifiutato non deve restare in registro");
+        assert!(
+            reg.is_empty(),
+            "un font rifiutato non deve restare in registro"
+        );
     }
 
     #[test]
@@ -365,7 +365,10 @@ mod tests {
         assert!(reg.remove(id));
         assert!(reg.get(id).is_none());
         assert!(reg.list().is_empty());
-        assert!(!reg.remove(id), "rimuovere due volte non è un errore, ma non fa nulla");
+        assert!(
+            !reg.remove(id),
+            "rimuovere due volte non è un errore, ma non fa nulla"
+        );
     }
 
     #[test]

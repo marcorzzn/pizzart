@@ -153,12 +153,7 @@ pub fn blend_channel(mode: BlendMode, cb: f32, cs: f32) -> f32 {
 /// Fusione di due pixel RGBA **non premoltiplicati** in `[0,1]`.
 ///
 /// `opacity` è l'opacità del layer: riduce l'alpha della sorgente, come lo slider.
-pub fn blend_rgba(
-    mode: BlendMode,
-    backdrop: [f32; 4],
-    source: [f32; 4],
-    opacity: f32,
-) -> [f32; 4] {
+pub fn blend_rgba(mode: BlendMode, backdrop: [f32; 4], source: [f32; 4], opacity: f32) -> [f32; 4] {
     let opacity = clamp01(opacity);
     let ab = clamp01(backdrop[3]);
     let a_s = clamp01(source[3]) * opacity;
@@ -230,7 +225,11 @@ mod tests {
     #[test]
     fn overlay_con_grigio_medio_e_identita() {
         for cb in [0.0, 0.1, 0.5, 0.75, 1.0] {
-            approx(blend_channel(BlendMode::Overlay, cb, 0.5), cb, "identita' a 0.5");
+            approx(
+                blend_channel(BlendMode::Overlay, cb, 0.5),
+                cb,
+                "identita' a 0.5",
+            );
         }
     }
 
@@ -240,18 +239,33 @@ mod tests {
             for cb in [0.0, 0.5, 1.0] {
                 for cs in [0.0, 0.5, 1.0] {
                     let v = blend_channel(mode, cb, cs);
-                    assert!(v.is_finite() && (0.0..=1.0).contains(&v), "{mode:?} {cb} {cs} -> {v}");
+                    assert!(
+                        v.is_finite() && (0.0..=1.0).contains(&v),
+                        "{mode:?} {cb} {cs} -> {v}"
+                    );
                 }
             }
         }
-        approx(blend_channel(BlendMode::ColorDodge, 0.0, 1.0), 0.0, "dodge su nero");
-        approx(blend_channel(BlendMode::ColorBurn, 1.0, 0.0), 1.0, "burn su bianco");
+        approx(
+            blend_channel(BlendMode::ColorDodge, 0.0, 1.0),
+            0.0,
+            "dodge su nero",
+        );
+        approx(
+            blend_channel(BlendMode::ColorBurn, 1.0, 0.0),
+            1.0,
+            "burn su bianco",
+        );
     }
 
     #[test]
     fn softlight_a_grigio_medio_e_identita() {
         for cb in [0.0, 0.2, 0.5, 0.8, 1.0] {
-            approx(blend_channel(BlendMode::SoftLight, cb, 0.5), cb, "identita' a 0.5");
+            approx(
+                blend_channel(BlendMode::SoftLight, cb, 0.5),
+                cb,
+                "identita' a 0.5",
+            );
         }
     }
 

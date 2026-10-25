@@ -129,7 +129,10 @@ fn registro(registry: &mut FontRegistry) -> String {
             return preferita.to_string();
         }
     }
-    families.first().cloned().unwrap_or_else(|| "sans-serif".into())
+    families
+        .first()
+        .cloned()
+        .unwrap_or_else(|| "sans-serif".into())
 }
 
 fn gradient(w: u32, h: u32) -> Vec<u8> {

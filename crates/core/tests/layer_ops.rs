@@ -35,7 +35,11 @@ fn merge_down_fonde_due_layer() {
     let dopo = doc.composite();
 
     assert_eq!(doc.layer_count(), 1, "resta un solo layer");
-    assert_eq!(doc.layer(sotto).unwrap().name, "sotto", "il risultato è il layer sotto");
+    assert_eq!(
+        doc.layer(sotto).unwrap().name,
+        "sotto",
+        "il risultato è il layer sotto"
+    );
     assert_eq!(prima, dopo, "il composito non deve cambiare");
     // il colore è quello atteso: multiply al 50% su bianco
     assert_eq!(px(&dopo, 8, 0, 0), [228, 148, 148, 255]);
@@ -87,7 +91,11 @@ fn flatten_group_produce_un_layer_alla_posizione_del_gruppo() {
 
     assert_eq!(prima, dopo, "il composito non cambia");
     assert!(doc.group(gid).is_none(), "il gruppo non esiste più");
-    assert_eq!(radice(&doc), vec!["fondo", "gruppo", "cima"], "stessa posizione");
+    assert_eq!(
+        radice(&doc),
+        vec!["fondo", "gruppo", "cima"],
+        "stessa posizione"
+    );
     let layer = doc.layer(nuovo).expect("nuovo layer");
     assert_eq!(layer.width, 4, "il layer ha la dimensione del documento");
     assert_eq!(layer.opacity, 1.0, "opacità già applicata");
@@ -100,7 +108,12 @@ fn flatten_group_con_mask() {
     doc.add_layer(Layer::filled("fondo", 4, 4, [0, 0, 0, 255]));
     let mut g = Group::new("gruppo");
     g.add(Node::Layer(Layer::filled("rosso", 4, 4, [255, 0, 0, 255])));
-    g.mask = Some(Arc::new(Mask::new(vec![128; 16], 4, 4, MaskSource::Procedural)));
+    g.mask = Some(Arc::new(Mask::new(
+        vec![128; 16],
+        4,
+        4,
+        MaskSource::Procedural,
+    )));
     let gid = doc.add_node(Node::Group(g));
 
     let prima = doc.composite();
@@ -119,7 +132,11 @@ fn duplicate_clona_mask_ma_non_la_condivide() {
 
     let copia = doc.duplicate(id).expect("duplicato");
     assert_eq!(doc.layer_count(), 2);
-    assert_eq!(doc.index_of(copia), doc.index_of(id).map(|i| i + 1), "sopra l'originale");
+    assert_eq!(
+        doc.index_of(copia),
+        doc.index_of(id).map(|i| i + 1),
+        "sopra l'originale"
+    );
 
     let (a, b) = (
         doc.layer(id).unwrap().mask.clone().unwrap(),
@@ -204,10 +221,7 @@ fn create_group_non_fratelli_e_errore() {
     let gid = doc.add_node(Node::Group(g));
     let dentro = doc.group(gid).unwrap().children[0].id();
 
-    assert_eq!(
-        doc.create_group(&[a, dentro]),
-        Err(LayerError::NotSiblings)
-    );
+    assert_eq!(doc.create_group(&[a, dentro]), Err(LayerError::NotSiblings));
 }
 
 #[test]
@@ -220,7 +234,11 @@ fn ungroup_ripristina_i_figli() {
 
     doc.ungroup(gid).expect("separazione");
     assert!(doc.group(gid).is_none());
-    assert_eq!(nomi(&doc), vec!["fondo", "a", "b"], "i figli al posto del gruppo");
+    assert_eq!(
+        nomi(&doc),
+        vec!["fondo", "a", "b"],
+        "i figli al posto del gruppo"
+    );
     assert_eq!(doc.parent_of(a), Some(None), "i figli tornano alla radice");
 }
 
@@ -328,7 +346,12 @@ fn l_opacita_del_gruppo_si_applica_al_composito_dei_figli() {
     doc.add_layer(Layer::filled("fondo", 2, 2, [0, 0, 0, 255]));
     let mut g = Group::new("gruppo");
     g.opacity = 0.5;
-    g.add(Node::Layer(Layer::filled("bianco", 2, 2, [255, 255, 255, 255])));
+    g.add(Node::Layer(Layer::filled(
+        "bianco",
+        2,
+        2,
+        [255, 255, 255, 255],
+    )));
     doc.add_node(Node::Group(g));
 
     let p = px(&doc.composite(), 2, 0, 0);

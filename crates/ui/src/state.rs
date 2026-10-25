@@ -423,14 +423,22 @@ impl Editor {
         let Some(contenitore) = self.doc.parent_of(id) else {
             return false;
         };
-        let quanti = self.doc.children_of(contenitore).map(|c| c.len()).unwrap_or(0);
+        let quanti = self
+            .doc
+            .children_of(contenitore)
+            .map(|c| c.len())
+            .unwrap_or(0);
         if (su && indice + 1 >= quanti) || (!su && indice == 0) {
             return false;
         }
         let destinazione = if su { indice + 1 } else { indice - 1 };
         // il contenitore del nodo: la radice per i layer di primo livello, il
         // gruppo per i suoi figli. Cercare sempre nella radice era il BUG-005.
-        let Some(altro) = self.doc.children_of(contenitore).and_then(|c| c.get(destinazione)) else {
+        let Some(altro) = self
+            .doc
+            .children_of(contenitore)
+            .and_then(|c| c.get(destinazione))
+        else {
             return false;
         };
         let target = altro.id();

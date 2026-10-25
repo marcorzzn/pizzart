@@ -13,10 +13,7 @@ use pizzart_ui::Tool as ToolRe;
 
 fn temp(nome: &str) -> PathBuf {
     let mut p = std::env::temp_dir();
-    p.push(format!(
-        "pizzart-ui-test-{nome}-{}.png",
-        std::process::id()
-    ));
+    p.push(format!("pizzart-ui-test-{nome}-{}.png", std::process::id()));
     p
 }
 
@@ -41,7 +38,11 @@ fn carica_png_come_layer() {
     editor.open_image(&path).expect("apertura");
 
     assert_eq!(editor.doc.layer_count(), 1, "un layer di sfondo");
-    assert_eq!((editor.doc.width, editor.doc.height), (40, 24), "dimensioni dal file");
+    assert_eq!(
+        (editor.doc.width, editor.doc.height),
+        (40, 24),
+        "dimensioni dal file"
+    );
     let layer = editor.selected_layer().expect("layer selezionato");
     assert_eq!(layer.width, 40);
     assert!(editor.needs_recompose, "il canvas deve essere ricomposto");
@@ -51,12 +52,18 @@ fn carica_png_come_layer() {
 #[test]
 fn salva_progetto_roundtrip_da_ui() {
     let mut editor = Editor::new(32, 24);
-    editor.doc.add_layer(Layer::filled("rosso", 32, 24, [200, 40, 40, 255]));
+    editor
+        .doc
+        .add_layer(Layer::filled("rosso", 32, 24, [200, 40, 40, 255]));
 
     let mut path = std::env::temp_dir();
     path.push(format!("pizzart-ui-test-{}.pizzart", std::process::id()));
     editor.save_project(&path).expect("salvataggio");
-    assert_eq!(editor.path.as_deref(), Some(path.as_path()), "il percorso viene ricordato");
+    assert_eq!(
+        editor.path.as_deref(),
+        Some(path.as_path()),
+        "il percorso viene ricordato"
+    );
 
     // un secondo editor, come se l'app fosse stata riaperta
     let mut riaperto = Editor::new(1, 1);
@@ -71,7 +78,9 @@ fn salva_progetto_roundtrip_da_ui() {
 #[test]
 fn la_history_con_un_drag_ha_un_solo_comando() {
     let mut editor = Editor::new(16, 16);
-    let id = editor.doc.add_layer(Layer::filled("velo", 16, 16, [10, 10, 10, 255]));
+    let id = editor
+        .doc
+        .add_layer(Layer::filled("velo", 16, 16, [10, 10, 10, 255]));
     assert_eq!(editor.history_len(), 0, "nessun comando iniziale");
 
     // un drag di 100 passi, come farebbe uno slider
@@ -98,17 +107,25 @@ fn la_history_con_un_drag_ha_un_solo_comando() {
 #[test]
 fn un_drag_senza_movimento_non_sporca_la_history() {
     let mut editor = Editor::new(8, 8);
-    let id = editor.doc.add_layer(Layer::filled("a", 8, 8, [1, 1, 1, 255]));
+    let id = editor
+        .doc
+        .add_layer(Layer::filled("a", 8, 8, [1, 1, 1, 255]));
     editor.begin_opacity_drag(id);
     editor.update_opacity_drag(1.0);
     editor.end_opacity_drag();
-    assert_eq!(editor.history_len(), 0, "nessun cambiamento, nessun comando");
+    assert_eq!(
+        editor.history_len(),
+        0,
+        "nessun cambiamento, nessun comando"
+    );
 }
 
 #[test]
 fn selezione_rect_produce_mask() {
     let mut editor = Editor::new(64, 64);
-    editor.doc.add_layer(Layer::filled("fondo", 64, 64, [255, 255, 255, 255]));
+    editor
+        .doc
+        .add_layer(Layer::filled("fondo", 64, 64, [255, 255, 255, 255]));
     let id = editor
         .doc
         .add_layer(Layer::filled("sopra", 64, 64, [200, 30, 30, 255]));
@@ -133,7 +150,9 @@ fn selezione_rect_produce_mask() {
 #[test]
 fn il_composito_viene_aggiornato_dopo_undo() {
     let mut editor = Editor::new(8, 8);
-    let id = editor.doc.add_layer(Layer::filled("a", 8, 8, [9, 9, 9, 255]));
+    let id = editor
+        .doc
+        .add_layer(Layer::filled("a", 8, 8, [9, 9, 9, 255]));
     editor.begin_opacity_drag(id);
     editor.update_opacity_drag(0.5);
     editor.end_opacity_drag();

@@ -427,8 +427,12 @@ mod tests {
     #[test]
     fn la_posizione_del_tile_segue_il_punto_scelto() {
         let mut reg = registro_con_font().expect("font di sistema");
-        let a = Text::new("X", TextStyle::new(40.0)).at(10.0, 20.0).render(&mut reg);
-        let b = Text::new("X", TextStyle::new(40.0)).at(110.0, 220.0).render(&mut reg);
+        let a = Text::new("X", TextStyle::new(40.0))
+            .at(10.0, 20.0)
+            .render(&mut reg);
+        let b = Text::new("X", TextStyle::new(40.0))
+            .at(110.0, 220.0)
+            .render(&mut reg);
         assert!(!a.is_empty() && !b.is_empty());
         assert_eq!(b.offset_x - a.offset_x, 100);
         assert_eq!(b.offset_y - a.offset_y, 200);
@@ -441,8 +445,7 @@ mod tests {
             "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
         ]
         .iter()
-        .find(|p| std::path::Path::new(p).exists())
-        else {
+        .find(|p| std::path::Path::new(p).exists()) else {
             eprintln!("nessun font su disco: test saltato");
             return;
         };

@@ -23,13 +23,23 @@ fn main() {
     doc.add_layer(Layer::new("sfondo", W, H, vertical_gradient(W, H)));
 
     // 2. Un "sole" morbido, in Screen: schiarisce senza bruciare i colori.
-    let mut sole = Layer::new("sole", 320, 320, radial(W, 320, 160.0, [255, 214, 120], 1.0));
+    let mut sole = Layer::new(
+        "sole",
+        320,
+        320,
+        radial(W, 320, 160.0, [255, 214, 120], 1.0),
+    );
     sole.transform = Transform::at(80.0, 40.0);
     sole.blend = BlendMode::Screen;
     doc.add_layer(sole);
 
     // 3. Un disco caldo in Multiply, semitrasparente, spostato.
-    let mut disco = Layer::new("disco", 300, 300, radial(W, 300, 150.0, [180, 60, 200], 1.0));
+    let mut disco = Layer::new(
+        "disco",
+        300,
+        300,
+        radial(W, 300, 150.0, [180, 60, 200], 1.0),
+    );
     disco.transform = Transform::at(330.0, 120.0);
     disco.blend = BlendMode::Multiply;
     disco.opacity = 0.85;
@@ -52,7 +62,12 @@ fn main() {
     }
 
     // 5. Un quadretto scalato in HardLight, per mostrare la scala.
-    let mut quad = Layer::new("quadro", 120, 120, radial(W, 120, 60.0, [255, 255, 255], 0.6));
+    let mut quad = Layer::new(
+        "quadro",
+        120,
+        120,
+        radial(W, 120, 60.0, [255, 255, 255], 0.6),
+    );
     quad.transform = Transform::at(620.0, 300.0);
     quad.transform.scale_x = 1.4;
     quad.transform.scale_y = 0.8;

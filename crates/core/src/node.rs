@@ -327,8 +327,16 @@ mod tests {
         let albero = vec![Node::Group(g), layer("cima")];
 
         assert!(find(&albero, id).is_some());
-        assert_eq!(parent_of(&albero, id), Some(Some(gid)), "il genitore è il gruppo");
-        assert_eq!(parent_of(&albero, gid), Some(None), "il gruppo è alla radice");
+        assert_eq!(
+            parent_of(&albero, id),
+            Some(Some(gid)),
+            "il genitore è il gruppo"
+        );
+        assert_eq!(
+            parent_of(&albero, gid),
+            Some(None),
+            "il gruppo è alla radice"
+        );
         assert_eq!(parent_of(&albero, LayerId::new()), None, "id sconosciuto");
     }
 

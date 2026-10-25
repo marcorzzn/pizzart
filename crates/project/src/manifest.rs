@@ -144,7 +144,10 @@ mod tests {
         let riletto: Manifest = serde_json::from_str(&json).expect("deserializza");
         assert_eq!(riletto.document.width, 16);
         assert_eq!(riletto.nodes.len(), 1);
-        assert!(riletto.nodes[0].children.is_empty(), "children vuoto è omesso");
+        assert!(
+            riletto.nodes[0].children.is_empty(),
+            "children vuoto è omesso"
+        );
         assert!(
             !json.contains("children"),
             "i campi vuoti non devono appesantire il manifest"

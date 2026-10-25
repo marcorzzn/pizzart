@@ -101,13 +101,25 @@ fn glow_effect(rgba: &[u8], w: u32, h: u32, effect: &Effect) -> Vec<u8> {
 ///
 /// Quantizza a 8 bit in uscita, come la texture intermedia della GPU: senza
 /// questa quantizzazione la parità sarebbe bugiarda.
-fn blur_direction(rgba: &[u8], w: u32, h: u32, radius: f32, sigma: f32, dx: i32, dy: i32) -> Vec<u8> {
+fn blur_direction(
+    rgba: &[u8],
+    w: u32,
+    h: u32,
+    radius: f32,
+    sigma: f32,
+    dx: i32,
+    dy: i32,
+) -> Vec<u8> {
     let mut out = rgba.to_vec();
     let r = radius.clamp(0.0, 16.0).ceil() as i32;
     if r == 0 {
         return out;
     }
-    let sigma = if sigma > 0.0 { sigma } else { (radius * 0.5).max(0.5) };
+    let sigma = if sigma > 0.0 {
+        sigma
+    } else {
+        (radius * 0.5).max(0.5)
+    };
 
     let mut weights = Vec::with_capacity((2 * r + 1) as usize);
     let mut weight_sum = 0.0f32;
@@ -258,7 +270,11 @@ mod tests {
         let fx = Effect::contrast(0.0);
         for v in [0.0, 0.25, 0.5, 0.75, 1.0] {
             let out = effect_rgb(fx.shader, [v, v, v], fx.params);
-            assert!((out[0] - v).abs() < 1e-6, "contrasto 0 su {v} ha dato {}", out[0]);
+            assert!(
+                (out[0] - v).abs() < 1e-6,
+                "contrasto 0 su {v} ha dato {}",
+                out[0]
+            );
         }
     }
 

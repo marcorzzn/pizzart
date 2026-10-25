@@ -7,8 +7,16 @@ fn main() {
     // quanto costa solo la conversione RGB?
     let grande = immagine(1920, 1080, |x, _| [x as u8, 20, 30, 255]);
     let inizio = std::time::Instant::now();
-    let rgb: Vec<u8> = grande.rgba.chunks_exact(4).flat_map(|p| [p[0], p[1], p[2]]).collect();
-    println!("conversione RGB pura: {:?} ({} byte)", inizio.elapsed(), rgb.len());
+    let rgb: Vec<u8> = grande
+        .rgba
+        .chunks_exact(4)
+        .flat_map(|p| [p[0], p[1], p[2]])
+        .collect();
+    println!(
+        "conversione RGB pura: {:?} ({} byte)",
+        inizio.elapsed(),
+        rgb.len()
+    );
 
     // scala del costo JPEG
     for lato in [(480u32, 270u32), (960, 540)] {
@@ -16,15 +24,27 @@ fn main() {
         let mut min = std::time::Duration::from_secs(999);
         for _ in 0..3 {
             let inizio = std::time::Instant::now();
-            let _ = encode(&img, ExportFormat::Jpeg { quality: 90 }, &ExportOptions::default());
+            let _ = encode(
+                &img,
+                ExportFormat::Jpeg { quality: 90 },
+                &ExportOptions::default(),
+            );
             min = min.min(inizio.elapsed());
         }
         let mp = lato.0 as f64 * lato.1 as f64 / 1e6;
-        println!("{}x{} ({mp:.2} MP): JPEG {min:?} -> {:.1} MP/s", lato.0, lato.1, mp / min.as_secs_f64());
+        println!(
+            "{}x{} ({mp:.2} MP): JPEG {min:?} -> {:.1} MP/s",
+            lato.0,
+            lato.1,
+            mp / min.as_secs_f64()
+        );
     }
 
     for (nome, img) in [
-        ("uniforme", immagine(1920, 1080, |_, _| [128u8, 128, 128, 255])),
+        (
+            "uniforme",
+            immagine(1920, 1080, |_, _| [128u8, 128, 128, 255]),
+        ),
         (
             "gradiente liscio",
             immagine(1920, 1080, |x, y| {

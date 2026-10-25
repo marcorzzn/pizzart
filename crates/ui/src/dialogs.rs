@@ -34,7 +34,11 @@ impl TextDialog {
 /// Esito del dialogo del testo.
 pub enum EsitoTesto {
     Annulla,
-    Conferma { testo: String, dimensione: f32, colore: [u8; 4] },
+    Conferma {
+        testo: String,
+        dimensione: f32,
+        colore: [u8; 4],
+    },
 }
 
 /// Disegna il dialogo. `None` se è ancora aperto.

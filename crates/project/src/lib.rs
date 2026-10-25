@@ -92,11 +92,19 @@ pub enum ProjectError {
     Zip(String),
     Codec(String),
     /// Il file è stato scritto da una versione più recente.
-    VersionMismatch { found: u32, max_supported: u32 },
+    VersionMismatch {
+        found: u32,
+        max_supported: u32,
+    },
     /// Un asset citato dal manifest non è nello zip.
-    MissingAsset { uuid: String },
+    MissingAsset {
+        uuid: String,
+    },
     /// Un font referenziato non è disponibile.
-    MissingFont { family: String, hash: String },
+    MissingFont {
+        family: String,
+        hash: String,
+    },
     /// Manifest leggibile ma struttura incoerente.
     InvalidStructure(String),
 }
@@ -174,8 +182,7 @@ pub fn save(doc: &Document, path: &Path, options: &SaveOptions) -> Result<(), Pr
         zip.write_all(dati)?;
     }
 
-    zip.finish()
-        .map_err(|e| ProjectError::Zip(e.to_string()))?;
+    zip.finish().map_err(|e| ProjectError::Zip(e.to_string()))?;
     Ok(())
 }
 
@@ -430,15 +437,11 @@ fn costruisci(
             if let Some(gia) = maschere.get(uuid) {
                 Some(gia.clone())
             } else {
-                let (dati, w, h) = asset.get(uuid).ok_or(ProjectError::MissingAsset {
-                    uuid: uuid.clone(),
-                })?;
-                let mask = std::sync::Arc::new(Mask::new(
-                    dati.clone(),
-                    *w,
-                    *h,
-                    MaskSource::FromTile,
-                ));
+                let (dati, w, h) = asset
+                    .get(uuid)
+                    .ok_or(ProjectError::MissingAsset { uuid: uuid.clone() })?;
+                let mask =
+                    std::sync::Arc::new(Mask::new(dati.clone(), *w, *h, MaskSource::FromTile));
                 maschere.insert(uuid.clone(), mask.clone());
                 Some(mask)
             }
@@ -451,9 +454,9 @@ fn costruisci(
             let uuid = voce.pixels_uuid.as_ref().ok_or_else(|| {
                 ProjectError::InvalidStructure(format!("layer {} senza pixel", voce.uuid))
             })?;
-            let (dati, w, h) = asset.get(uuid).ok_or(ProjectError::MissingAsset {
-                uuid: uuid.clone(),
-            })?;
+            let (dati, w, h) = asset
+                .get(uuid)
+                .ok_or(ProjectError::MissingAsset { uuid: uuid.clone() })?;
             let t = voce.transform.unwrap_or(TransformEntry {
                 x: 0.0,
                 y: 0.0,
@@ -828,7 +831,10 @@ mod tests {
         let letto = load(&path).expect("load");
         let dopo = letto.composite();
 
-        assert_eq!(prima, dopo, "il composito deve essere identico byte per byte");
+        assert_eq!(
+            prima, dopo,
+            "il composito deve essere identico byte per byte"
+        );
         let _ = std::fs::remove_file(&path);
     }
 

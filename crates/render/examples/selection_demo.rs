@@ -71,12 +71,9 @@ fn main() {
     let desaturato = renderer
         .apply_effects(&gradiente, &[Effect::saturate(-0.5)])
         .expect("saturate");
-    let ellisse = EllipseSelection::circle(
-        PANEL as f32 / 2.0,
-        PANEL as f32 / 2.0,
-        PANEL as f32 * 0.34,
-    )
-    .to_mask(PANEL, PANEL);
+    let ellisse =
+        EllipseSelection::circle(PANEL as f32 / 2.0, PANEL as f32 / 2.0, PANEL as f32 * 0.34)
+            .to_mask(PANEL, PANEL);
     println!(
         "ellisse: maschera {}x{}, {} pixel coperti",
         ellisse.width,

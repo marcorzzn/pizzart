@@ -553,11 +553,7 @@ impl Command for MergeDown {
         base.blend = BlendMode::Normal;
         base.opacity = 1.0;
 
-        let fuso = compositor::composite_nodes(
-            &[Node::Layer(base), top],
-            doc.width,
-            doc.height,
-        );
+        let fuso = compositor::composite_nodes(&[Node::Layer(base), top], doc.width, doc.height);
 
         let (doc_w, doc_h) = (doc.width, doc.height);
         doc.remove_node(self.top);
@@ -909,7 +905,11 @@ mod tests {
         let sopra_id = sopra.id;
         doc.execute(Box::new(AddLayer::new(sotto)));
         doc.execute(Box::new(AddLayer::new(sopra).at(0)));
-        assert_eq!(doc.layers()[0].id, sopra_id, "inserito in cima all'indice 0");
+        assert_eq!(
+            doc.layers()[0].id,
+            sopra_id,
+            "inserito in cima all'indice 0"
+        );
         doc.undo();
         assert_eq!(doc.layer_count(), 1);
     }
@@ -968,7 +968,12 @@ mod tests {
         let mut doc = Document::new(4, 4);
         doc.history = History::new(3);
         for _ in 0..5 {
-            doc.execute(Box::new(AddLayer::new(Layer::filled("x", 4, 4, [0, 0, 0, 255]))));
+            doc.execute(Box::new(AddLayer::new(Layer::filled(
+                "x",
+                4,
+                4,
+                [0, 0, 0, 255],
+            ))));
         }
         assert_eq!(doc.history.len(), 3);
         let mut annullati = 0;
@@ -986,14 +991,20 @@ mod tests {
         doc.undo();
         assert!(doc.history.can_redo());
         doc.execute(Box::new(SetOpacity::new(id, 0.9)));
-        assert!(!doc.history.can_redo(), "storia lineare: niente diramazioni");
+        assert!(
+            !doc.history.can_redo(),
+            "storia lineare: niente diramazioni"
+        );
     }
 
     #[test]
     fn le_etichette_descrivono_la_storia() {
         let (mut doc, id) = doc_con_un_layer();
         doc.execute(Box::new(SetOpacity::new(id, 0.5)));
-        assert_eq!(doc.history.labels(), vec!["Aggiungi livello", "Opacità livello"]);
+        assert_eq!(
+            doc.history.labels(),
+            vec!["Aggiungi livello", "Opacità livello"]
+        );
     }
 
     #[test]

@@ -86,9 +86,16 @@ fn main() {
         px.copy_from_slice(&[22, 24, 30, 255]);
     }
 
-    for (i, pannello) in [originale, luminosa, processata, sfocata, nitida, luminosa_alone]
-        .into_iter()
-        .enumerate()
+    for (i, pannello) in [
+        originale,
+        luminosa,
+        processata,
+        sfocata,
+        nitida,
+        luminosa_alone,
+    ]
+    .into_iter()
+    .enumerate()
     {
         let x = GAP as i32 + i as i32 * (PANEL as i32 + GAP as i32);
         pannello

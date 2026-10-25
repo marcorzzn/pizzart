@@ -262,7 +262,11 @@ pub fn pannello_layer(ui: &mut egui::Ui, editor: &mut Editor, errore: &mut Optio
                 if ui.button("↓").on_hover_text("sposta sotto").clicked() {
                     editor.move_selected(false);
                 }
-                if ui.button("Fondi").on_hover_text("fondi con il layer sotto").clicked() {
+                if ui
+                    .button("Fondi")
+                    .on_hover_text("fondi con il layer sotto")
+                    .clicked()
+                {
                     if let Err(e) = editor.merge_down() {
                         *errore = Some(e);
                     }
@@ -296,10 +300,7 @@ pub fn pannello_effetti(
         .selected_text(stato.effetto.nome())
         .show_ui(ui, |ui| {
             for e in Effetto::TUTTI {
-                if ui
-                    .selectable_label(stato.effetto == e, e.nome())
-                    .clicked()
-                {
+                if ui.selectable_label(stato.effetto == e, e.nome()).clicked() {
                     stato.effetto = e;
                     let (_, _, d) = e.intervallo();
                     stato.valore = d;
@@ -328,7 +329,10 @@ pub fn pannello_effetti(
     ui.separator();
     ui.label(RichText::new("maschere").small().strong());
     if ui
-        .add_enabled(editor.selected.is_some(), egui::Button::new("Maschera ellittica"))
+        .add_enabled(
+            editor.selected.is_some(),
+            egui::Button::new("Maschera ellittica"),
+        )
         .clicked()
     {
         if let Err(e) = editor.apply_ellipse_mask() {
@@ -336,7 +340,10 @@ pub fn pannello_effetti(
         }
     }
     if ui
-        .add_enabled(editor.selected.is_some(), egui::Button::new("Togli maschera"))
+        .add_enabled(
+            editor.selected.is_some(),
+            egui::Button::new("Togli maschera"),
+        )
         .clicked()
     {
         if let Err(e) = editor.clear_mask() {
@@ -363,7 +370,11 @@ pub fn barra_stato(ui: &mut egui::Ui, editor: &Editor) {
             .small(),
         );
         ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
-            ui.label(RichText::new(&editor.status).small().color(Color32::from_rgb(160, 200, 160)));
+            ui.label(
+                RichText::new(&editor.status)
+                    .small()
+                    .color(Color32::from_rgb(160, 200, 160)),
+            );
         });
     });
 }

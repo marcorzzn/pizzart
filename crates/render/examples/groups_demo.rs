@@ -62,7 +62,9 @@ fn main() {
     }
     for (i, img) in [piatto, con_gruppo, appiattito].into_iter().enumerate() {
         let x = GAP as i32 + i as i32 * (PANEL as i32 + GAP as i32);
-        blit(&img.rgba, PANEL, PANEL, &mut tela, larghezza, altezza, x, GAP as i32);
+        blit(
+            &img.rgba, PANEL, PANEL, &mut tela, larghezza, altezza, x, GAP as i32,
+        );
     }
 
     image::save_buffer(

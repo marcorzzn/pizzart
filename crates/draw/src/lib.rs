@@ -504,11 +504,7 @@ pub fn stabilise(points: &[Point], strength: f32) -> Vec<Point> {
     for p in &points[1..] {
         sx += (1.0 - k) * (p.x - sx);
         sy += (1.0 - k) * (p.y - sy);
-        out.push(Point {
-            x: sx,
-            y: sy,
-            ..*p
-        });
+        out.push(Point { x: sx, y: sy, ..*p });
     }
     out
 }
@@ -556,10 +552,7 @@ fn catmull_rom_point(p0: Point, p1: Point, p2: Point, p3: Point, t: f32) -> (f32
             + (2.0 * a - 5.0 * b + 4.0 * c - d) * t2
             + (-a + 3.0 * b - 3.0 * c + d) * t3)
     };
-    (
-        f(p0.x, p1.x, p2.x, p3.x),
-        f(p0.y, p1.y, p2.y, p3.y),
-    )
+    (f(p0.x, p1.x, p2.x, p3.x), f(p0.y, p1.y, p2.y, p3.y))
 }
 
 #[cfg(test)]
@@ -589,7 +582,10 @@ mod tests {
         let stroke = Stroke::new(Brush::default());
         let out = stroke.render(32, 32);
         assert_eq!(out.len(), 32 * 32 * 4);
-        assert!(out.iter().all(|b| *b == 0), "nessun pixel deve essere scritto");
+        assert!(
+            out.iter().all(|b| *b == 0),
+            "nessun pixel deve essere scritto"
+        );
         assert!(stroke.stamps().is_empty());
     }
 
@@ -677,10 +673,19 @@ mod tests {
         let fitto = linea(0.1);
         let medio = linea(0.5);
         let rado = linea(1.0);
-        assert!(fitto > medio, "0.1 ({fitto}) deve avere più timbri di 0.5 ({medio})");
-        assert!(medio > rado, "0.5 ({medio}) deve avere più timbri di 1.0 ({rado})");
+        assert!(
+            fitto > medio,
+            "0.1 ({fitto}) deve avere più timbri di 0.5 ({medio})"
+        );
+        assert!(
+            medio > rado,
+            "0.5 ({medio}) deve avere più timbri di 1.0 ({rado})"
+        );
         // 44 pixel di percorso, passo 1 -> circa 44 timbri
-        assert!((40..=46).contains(&fitto), "timbri con spacing 0.1: {fitto}");
+        assert!(
+            (40..=46).contains(&fitto),
+            "timbri con spacing 0.1: {fitto}"
+        );
         // passo 10 -> circa 5 timbri
         assert!((4..=6).contains(&rado), "timbri con spacing 1.0: {rado}");
     }
@@ -730,14 +735,23 @@ mod tests {
         let sottile = area(0.0);
         let medio = area(0.5);
         let pieno = area(1.0);
-        assert!(sottile < medio && medio < pieno, "{sottile} < {medio} < {pieno}");
+        assert!(
+            sottile < medio && medio < pieno,
+            "{sottile} < {medio} < {pieno}"
+        );
         // a pressione 0 il raggio è il 15% del massimo -> area ~2.25%
         let rapporto = sottile as f32 / pieno as f32;
-        assert!(rapporto < 0.05, "a pressione 0 il tratto deve essere sottile: {rapporto}");
+        assert!(
+            rapporto < 0.05,
+            "a pressione 0 il tratto deve essere sottile: {rapporto}"
+        );
         // il raggio cresce in modo lineare, quindi l'area come il quadrato
         let atteso = (0.15 + 0.85 * 0.5f32).powi(2);
         let misurato = medio as f32 / pieno as f32;
-        assert!((misurato - atteso).abs() < 0.06, "atteso {atteso}, misurato {misurato}");
+        assert!(
+            (misurato - atteso).abs() < 0.06,
+            "atteso {atteso}, misurato {misurato}"
+        );
     }
 
     #[test]
@@ -752,16 +766,20 @@ mod tests {
         };
         let sfumato = intermedi(0.0);
         let netto = intermedi(1.0);
-        assert!(sfumato > 50, "hardness 0 deve avere un gradiente: {sfumato}");
-        assert_eq!(netto, 0, "hardness 1 non deve avere pixel intermedi: {netto}");
+        assert!(
+            sfumato > 50,
+            "hardness 0 deve avere un gradiente: {sfumato}"
+        );
+        assert_eq!(
+            netto, 0,
+            "hardness 1 non deve avere pixel intermedi: {netto}"
+        );
     }
 
     #[test]
     fn il_blend_mode_cambia_il_risultato_su_un_fondo_noto() {
         let tratto = |blend: BlendMode| {
-            let mut s = Stroke::new(
-                Brush::new(8.0).hardness(1.0).color([0, 0, 0]).blend(blend),
-            );
+            let mut s = Stroke::new(Brush::new(8.0).hardness(1.0).color([0, 0, 0]).blend(blend));
             s.add(Point::new(4.0, 4.0));
             let mut dst = canvas(8, 8);
             s.render_over(&mut dst, 8, 8);
@@ -769,18 +787,21 @@ mod tests {
         };
 
         assert_eq!(tratto(BlendMode::Normal), [0, 0, 0, 255], "nero su bianco");
-        assert_eq!(tratto(BlendMode::Multiply), [0, 0, 0, 255], "moltiplica per nero");
-        assert_eq!(tratto(BlendMode::Screen), [255, 255, 255, 255], "schiarisci nero su bianco");
+        assert_eq!(
+            tratto(BlendMode::Multiply),
+            [0, 0, 0, 255],
+            "moltiplica per nero"
+        );
+        assert_eq!(
+            tratto(BlendMode::Screen),
+            [255, 255, 255, 255],
+            "schiarisci nero su bianco"
+        );
     }
 
     #[test]
     fn l_opacita_del_pennello_media_il_tratto() {
-        let mut s = Stroke::new(
-            Brush::new(8.0)
-                .hardness(1.0)
-                .opacity(0.5)
-                .color([0, 0, 0]),
-        );
+        let mut s = Stroke::new(Brush::new(8.0).hardness(1.0).opacity(0.5).color([0, 0, 0]));
         s.add(Point::new(4.0, 4.0));
         let mut dst = canvas(8, 8);
         s.render_over(&mut dst, 8, 8);
@@ -805,13 +826,14 @@ mod tests {
             let mut s = Stroke::new(Brush::new(30.0).hardness(1.0));
             s.add(Point::new(32.0, 32.0).with_tilt(tilt, 0.0));
             let out = s.render(64, 64);
-            (0..64)
-                .filter(|y| alpha_at(&out, 64, 32, *y) > 0)
-                .count()
+            (0..64).filter(|y| alpha_at(&out, 64, 32, *y) > 0).count()
         };
         let tondo = altezza(0.0);
         let inclinato = altezza(90.0);
-        assert!(inclinato < tondo, "il tilt deve stringere: {inclinato} < {tondo}");
+        assert!(
+            inclinato < tondo,
+            "il tilt deve stringere: {inclinato} < {tondo}"
+        );
         assert!(inclinato > tondo / 2, "ma non annullarlo: {inclinato}");
 
         // la larghezza resta quella del pennello
@@ -819,7 +841,10 @@ mod tests {
         s.add(Point::new(32.0, 32.0).with_tilt(90.0, 0.0));
         let out = s.render(64, 64);
         let larghezza = (0..64).filter(|x| alpha_at(&out, 64, *x, 32) > 0).count();
-        assert!(larghezza >= tondo - 2, "la larghezza non deve cambiare: {larghezza}");
+        assert!(
+            larghezza >= tondo - 2,
+            "la larghezza non deve cambiare: {larghezza}"
+        );
     }
 
     #[test]
@@ -856,7 +881,10 @@ mod tests {
     fn il_rendering_e_deterministico() {
         let mut s = Stroke::new(Brush::new(12.0));
         for i in 0..10 {
-            s.add(Point::new(10.0 + i as f32 * 4.0, 32.0 + (i as f32).sin() * 6.0));
+            s.add(Point::new(
+                10.0 + i as f32 * 4.0,
+                32.0 + (i as f32).sin() * 6.0,
+            ));
         }
         assert_eq!(s.render(64, 64), s.render(64, 64));
     }
@@ -964,7 +992,11 @@ mod tests {
             "larghezza del ritaglio: {}",
             tile.width
         );
-        assert!(tile.offset_y <= 25, "offset verticale coerente: {}", tile.offset_y);
+        assert!(
+            tile.offset_y <= 25,
+            "offset verticale coerente: {}",
+            tile.offset_y
+        );
     }
 
     #[test]
@@ -973,16 +1005,8 @@ mod tests {
         s.add(Point::new(100.0, 100.0));
         let tile = s.render_bbox(200, 200);
         // raggio 20 + 1 di margine per lato -> circa 42
-        assert!(
-            (40..=44).contains(&tile.width),
-            "larghezza {}",
-            tile.width
-        );
-        assert!(
-            (40..=44).contains(&tile.height),
-            "altezza {}",
-            tile.height
-        );
+        assert!((40..=44).contains(&tile.width), "larghezza {}", tile.width);
+        assert!((40..=44).contains(&tile.height), "altezza {}", tile.height);
         assert_eq!(tile.byte_len(), (tile.width * tile.height * 4) as usize);
     }
 

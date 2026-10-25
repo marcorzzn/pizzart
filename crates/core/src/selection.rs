@@ -51,8 +51,7 @@ where
                 }
             }
             if hits > 0 {
-                alpha[(y as usize * doc_w as usize) + x as usize] =
-                    ((hits * 255) / total) as u8;
+                alpha[(y as usize * doc_w as usize) + x as usize] = ((hits * 255) / total) as u8;
             }
         }
     }
@@ -112,7 +111,12 @@ impl EllipseSelection {
         let (x0, y0, x1, y1) = {
             let x0 = self.x.min(self.x + self.w);
             let y0 = self.y.min(self.y + self.h);
-            (x0, y0, self.x.max(self.x + self.w), self.y.max(self.y + self.h))
+            (
+                x0,
+                y0,
+                self.x.max(self.x + self.w),
+                self.y.max(self.y + self.h),
+            )
         };
         let (w, h) = (x1 - x0, y1 - y0);
         if w <= 0.0 || h <= 0.0 {
@@ -212,7 +216,10 @@ mod tests {
             h: -50.0,
         }
         .to_mask(w, h);
-        assert_eq!(avanti, indietro, "il trascinamento opposto deve dare la stessa maschera");
+        assert_eq!(
+            avanti, indietro,
+            "il trascinamento opposto deve dare la stessa maschera"
+        );
         assert_eq!(alpha_at(&indietro, 60, 60), 255);
         assert_eq!(alpha_at(&indietro, 40, 40), 0);
     }
@@ -277,7 +284,10 @@ mod tests {
         .to_mask(100, 100);
         assert!(larga.alpha.iter().all(|a| *a == 0));
         assert!(alta.alpha.iter().all(|a| *a == 0));
-        assert_eq!(larga.width, 100, "anche vuota, la maschera ha la tela intera");
+        assert_eq!(
+            larga.width, 100,
+            "anche vuota, la maschera ha la tela intera"
+        );
     }
 
     #[test]
@@ -287,7 +297,11 @@ mod tests {
         let mask = EllipseSelection::circle(100.0, 100.0, 50.0).to_mask(200, 200);
         assert_eq!(alpha_at(&mask, 100, 100), 255, "centro");
         assert_eq!(alpha_at(&mask, 149, 100), 255, "dentro, vicino al bordo");
-        assert_eq!(alpha_at(&mask, 150, 100), 0, "il bordo è escluso, come il rettangolo");
+        assert_eq!(
+            alpha_at(&mask, 150, 100),
+            0,
+            "il bordo è escluso, come il rettangolo"
+        );
         assert_eq!(alpha_at(&mask, 151, 100), 0, "fuori");
 
         // con un centro a metà pixel il bordo attraversa il pixel 150:
@@ -310,12 +324,8 @@ mod tests {
 
     #[test]
     fn lazo_triangolo() {
-        let mask = LassoSelection::new(vec![
-            (50.0, 50.0),
-            (150.0, 50.0),
-            (100.0, 150.0),
-        ])
-        .to_mask(200, 200);
+        let mask = LassoSelection::new(vec![(50.0, 50.0), (150.0, 50.0), (100.0, 150.0)])
+            .to_mask(200, 200);
         assert_eq!(alpha_at(&mask, 100, 70), 255, "dentro il triangolo");
         assert_eq!(alpha_at(&mask, 10, 10), 0, "fuori");
         assert_eq!(alpha_at(&mask, 100, 160), 0, "sotto la punta");
@@ -335,8 +345,16 @@ mod tests {
             (40.0, 180.0),
         ];
         let mask = LassoSelection::new(punti).to_mask(200, 200);
-        assert_eq!(alpha_at(&mask, 55, 100), 255, "il braccio sinistro è dentro");
-        assert_eq!(alpha_at(&mask, 55, 35), 255, "il braccio superiore è dentro");
+        assert_eq!(
+            alpha_at(&mask, 55, 100),
+            255,
+            "il braccio sinistro è dentro"
+        );
+        assert_eq!(
+            alpha_at(&mask, 55, 35),
+            255,
+            "il braccio superiore è dentro"
+        );
         assert_eq!(alpha_at(&mask, 120, 100), 0, "il centro della C è fuori");
         assert_eq!(alpha_at(&mask, 170, 100), 0, "oltre il braccio");
     }
@@ -357,7 +375,8 @@ mod tests {
             h: 12.0,
         }
         .to_mask(200, 150);
-        let lazo = LassoSelection::new(vec![(2.0, 3.0), (12.0, 3.0), (7.0, 15.0)]).to_mask(200, 150);
+        let lazo =
+            LassoSelection::new(vec![(2.0, 3.0), (12.0, 3.0), (7.0, 15.0)]).to_mask(200, 150);
         for (nome, mask) in [("rect", rect), ("ellisse", ell), ("lazo", lazo)] {
             assert_eq!(mask.width, 200, "{nome}: larghezza");
             assert_eq!(mask.height, 150, "{nome}: altezza");

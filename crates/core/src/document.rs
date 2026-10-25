@@ -337,7 +337,11 @@ mod tests {
         assert_eq!(&doc.composite()[0..4], &[255, 255, 255, 255]);
 
         doc.undo();
-        assert_eq!(&doc.composite()[0..4], &[0, 0, 0, 0], "documento di nuovo vuoto");
+        assert_eq!(
+            &doc.composite()[0..4],
+            &[0, 0, 0, 0],
+            "documento di nuovo vuoto"
+        );
 
         doc.redo();
         assert_eq!(&doc.composite()[0..4], &[255, 255, 255, 255]);

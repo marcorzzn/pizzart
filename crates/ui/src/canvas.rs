@@ -31,12 +31,7 @@ pub fn rect_documento(area: Rect, doc_w: u32, doc_h: u32, zoom: f32, pan: egui::
 }
 
 /// Da punto sullo schermo a pixel del documento.
-pub fn schermo_a_documento(
-    punto: Pos2,
-    rect: Rect,
-    doc_w: u32,
-    doc_h: u32,
-) -> Option<(f32, f32)> {
+pub fn schermo_a_documento(punto: Pos2, rect: Rect, doc_w: u32, doc_h: u32) -> Option<(f32, f32)> {
     if !rect.contains(punto) {
         return None;
     }
@@ -68,10 +63,7 @@ pub fn imposta_zoom(
     let v = (cursore.y - before.top()) / before.height();
 
     let dopo = rect_documento(area, doc_w, doc_h, zoom_nuovo, egui::vec2(pan.0, pan.1));
-    let min_atteso = egui::pos2(
-        cursore.x - u * dopo.width(),
-        cursore.y - v * dopo.height(),
-    );
+    let min_atteso = egui::pos2(cursore.x - u * dopo.width(), cursore.y - v * dopo.height());
     let delta = min_atteso - dopo.min;
     (zoom_nuovo, (pan.0 + delta.x, pan.1 + delta.y))
 }

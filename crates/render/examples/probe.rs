@@ -13,7 +13,9 @@ fn main() {
     println!("1. loading wgpu (nessun backend ancora toccato)");
 
     // Backend selezionabile: `probe dx12` / `probe vulkan` / `probe all`.
-    let which = std::env::args().nth(1).unwrap_or_else(|| "dx12".to_string());
+    let which = std::env::args()
+        .nth(1)
+        .unwrap_or_else(|| "dx12".to_string());
     let backends = match which.as_str() {
         "all" => wgpu::Backends::all(),
         "vulkan" => wgpu::Backends::VULKAN,

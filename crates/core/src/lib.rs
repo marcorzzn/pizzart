@@ -45,25 +45,25 @@ pub mod history;
 pub mod image;
 pub mod layer;
 pub mod mask;
+pub mod math;
 pub mod node;
 pub mod selection;
 pub mod stable;
-pub mod math;
 pub mod transform;
 
 pub use blend::BlendMode;
 pub use compositor::composite;
 pub use document::Document;
 pub use error::LayerError;
-pub use node::{Group, InsertWhere, Node};
 pub use history::{
-    AddLayer, Command, History, RemoveLayer, RenameLayer, SetBlendMode, SetLayerMask, SetOpacity, SetVisible,
-    SetTransform, ToggleMaskInverted,
+    AddLayer, Command, History, RemoveLayer, RenameLayer, SetBlendMode, SetLayerMask, SetOpacity,
+    SetTransform, SetVisible, ToggleMaskInverted,
 };
 pub use image::PlacedImage;
 pub use layer::{Layer, LayerId};
 pub use mask::{Mask, MaskSource, SharedMask};
+pub use math::Mat4;
+pub use node::{Group, InsertWhere, Node};
 pub use selection::{EllipseSelection, LassoSelection, RectSelection};
 pub use stable::StableId;
-pub use math::Mat4;
 pub use transform::Transform;

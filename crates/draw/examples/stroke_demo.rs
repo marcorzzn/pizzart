@@ -44,12 +44,54 @@ fn main() {
     }
 
     let casi = [
-        Caso { blend: BlendMode::Normal, color: [24, 40, 110], hardness: 1.0, spacing: 0.10, y: 70.0, pressione_decrescente: false },
-        Caso { blend: BlendMode::Multiply, color: [210, 30, 140], hardness: 0.15, spacing: 0.12, y: 165.0, pressione_decrescente: true },
-        Caso { blend: BlendMode::Screen, color: [0, 150, 220], hardness: 0.50, spacing: 0.15, y: 260.0, pressione_decrescente: false },
-        Caso { blend: BlendMode::Overlay, color: [235, 140, 30], hardness: 0.90, spacing: 0.10, y: 355.0, pressione_decrescente: true },
-        Caso { blend: BlendMode::Difference, color: [20, 180, 90], hardness: 0.10, spacing: 0.20, y: 450.0, pressione_decrescente: false },
-        Caso { blend: BlendMode::Exclusion, color: [140, 20, 40], hardness: 0.80, spacing: 0.60, y: 545.0, pressione_decrescente: true },
+        Caso {
+            blend: BlendMode::Normal,
+            color: [24, 40, 110],
+            hardness: 1.0,
+            spacing: 0.10,
+            y: 70.0,
+            pressione_decrescente: false,
+        },
+        Caso {
+            blend: BlendMode::Multiply,
+            color: [210, 30, 140],
+            hardness: 0.15,
+            spacing: 0.12,
+            y: 165.0,
+            pressione_decrescente: true,
+        },
+        Caso {
+            blend: BlendMode::Screen,
+            color: [0, 150, 220],
+            hardness: 0.50,
+            spacing: 0.15,
+            y: 260.0,
+            pressione_decrescente: false,
+        },
+        Caso {
+            blend: BlendMode::Overlay,
+            color: [235, 140, 30],
+            hardness: 0.90,
+            spacing: 0.10,
+            y: 355.0,
+            pressione_decrescente: true,
+        },
+        Caso {
+            blend: BlendMode::Difference,
+            color: [20, 180, 90],
+            hardness: 0.10,
+            spacing: 0.20,
+            y: 450.0,
+            pressione_decrescente: false,
+        },
+        Caso {
+            blend: BlendMode::Exclusion,
+            color: [140, 20, 40],
+            hardness: 0.80,
+            spacing: 0.60,
+            y: 545.0,
+            pressione_decrescente: true,
+        },
     ];
 
     let mut totale_ms = 0.0f64;
@@ -71,7 +113,11 @@ fn main() {
             let t = k as f32 / (n - 1) as f32;
             let x = 70.0 + t * (W as f32 - 140.0);
             let y = caso.y + (t * 4.0 * std::f32::consts::PI).sin() * 22.0;
-            let p = if caso.pressione_decrescente { 1.0 - t * 0.85 } else { 0.15 + t * 0.85 };
+            let p = if caso.pressione_decrescente {
+                1.0 - t * 0.85
+            } else {
+                0.15 + t * 0.85
+            };
             stroke.add(Point::new(x, y).with_pressure(p).with_time(k as f64 * 8.0));
         }
 
@@ -93,17 +139,9 @@ fn main() {
         );
     }
 
-    println!(
-        "\ntotale: {totale_timbri} timbri, {totale_ms:.2} ms su {W}x{H} (CPU, single thread)"
-    );
+    println!("\ntotale: {totale_timbri} timbri, {totale_ms:.2} ms su {W}x{H} (CPU, single thread)");
 
-    image::save_buffer(
-        "stroke_demo.png",
-        &canvas,
-        W,
-        H,
-        image::ColorType::Rgba8,
-    )
-    .expect("scrittura PNG");
+    image::save_buffer("stroke_demo.png", &canvas, W, H, image::ColorType::Rgba8)
+        .expect("scrittura PNG");
     println!("scritto stroke_demo.png");
 }

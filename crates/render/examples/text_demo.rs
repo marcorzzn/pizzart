@@ -114,7 +114,13 @@ fn main() {
 /// Sceglie una famiglia utilizzabile: prima dal sistema, poi da un file.
 fn registro(registry: &mut FontRegistry) -> String {
     let families = registry.system_families();
-    for preferita in ["Arial", "Segoe UI", "DejaVu Sans", "Helvetica", "Liberation Sans"] {
+    for preferita in [
+        "Arial",
+        "Segoe UI",
+        "DejaVu Sans",
+        "Helvetica",
+        "Liberation Sans",
+    ] {
         if families.iter().any(|f| f.eq_ignore_ascii_case(preferita)) {
             return preferita.to_string();
         }

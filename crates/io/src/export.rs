@@ -68,7 +68,9 @@ impl std::fmt::Display for ExportError {
             ExportError::MissingBackgroundForOpaqueFormat => {
                 write!(f, "il formato non supporta la trasparenza: indica un fondo")
             }
-            ExportError::InvalidQuality(q) => write!(f, "qualità {q} fuori dall'intervallo 1..=100"),
+            ExportError::InvalidQuality(q) => {
+                write!(f, "qualità {q} fuori dall'intervallo 1..=100")
+            }
             ExportError::Encoding(e) => write!(f, "errore di codifica: {e}"),
             ExportError::FeatureNotEnabled(what) => {
                 write!(f, "{what} non è disponibile in questa build")
@@ -311,8 +313,12 @@ mod tests {
     #[test]
     fn jpeg_su_immagine_opaca_funziona_senza_background() {
         let opaca = gradiente_con_dettaglio(16, 16);
-        let bytes = encode(&opaca, ExportFormat::Jpeg { quality: 95 }, &ExportOptions::default())
-            .expect("jpeg senza fondo ma opaca");
+        let bytes = encode(
+            &opaca,
+            ExportFormat::Jpeg { quality: 95 },
+            &ExportOptions::default(),
+        )
+        .expect("jpeg senza fondo ma opaca");
         assert!(!bytes.is_empty());
         let riletto = decodifica(&bytes);
         assert_eq!((riletto.width, riletto.height), (16, 16));
@@ -322,8 +328,12 @@ mod tests {
     fn jpeg_qualita_invalida_e_errore() {
         let opaca = gradiente_con_dettaglio(4, 4);
         for q in [0u8, 101u8] {
-            let err = encode(&opaca, ExportFormat::Jpeg { quality: q }, &ExportOptions::default())
-                .unwrap_err();
+            let err = encode(
+                &opaca,
+                ExportFormat::Jpeg { quality: q },
+                &ExportOptions::default(),
+            )
+            .unwrap_err();
             assert_eq!(err, ExportError::InvalidQuality(q));
         }
     }
@@ -331,12 +341,16 @@ mod tests {
     #[cfg(feature = "webp")]
     #[test]
     fn webp_lossless_conserva_l_alpha() {
-        let originale = img(4, 1, vec![
-            [10, 20, 30, 0],
-            [40, 50, 60, 128],
-            [70, 80, 90, 255],
-            [1, 2, 3, 200],
-        ]);
+        let originale = img(
+            4,
+            1,
+            vec![
+                [10, 20, 30, 0],
+                [40, 50, 60, 128],
+                [70, 80, 90, 255],
+                [1, 2, 3, 200],
+            ],
+        );
         let bytes = encode(
             &originale,
             ExportFormat::WebP {
@@ -398,8 +412,12 @@ mod tests {
     #[test]
     fn round_trip_jpeg_su_immagine_opaca() {
         let originale = gradiente_liscio(64, 64);
-        let bytes = encode(&originale, ExportFormat::Jpeg { quality: 95 }, &ExportOptions::default())
-            .expect("jpeg");
+        let bytes = encode(
+            &originale,
+            ExportFormat::Jpeg { quality: 95 },
+            &ExportOptions::default(),
+        )
+        .expect("jpeg");
         let riletto = decodifica(&bytes);
         let diff = max_diff(&originale.rgba, &riletto.rgba);
         assert!(diff <= 5, "JPEG quality 95: differenza {diff}/255");
@@ -448,8 +466,12 @@ mod tests {
         let mut jpeg = Vec::new();
         for _ in 0..3 {
             let inizio = std::time::Instant::now();
-            jpeg = encode(&grande, ExportFormat::Jpeg { quality: 90 }, &ExportOptions::default())
-                .expect("jpeg");
+            jpeg = encode(
+                &grande,
+                ExportFormat::Jpeg { quality: 90 },
+                &ExportOptions::default(),
+            )
+            .expect("jpeg");
             tempo_jpeg = tempo_jpeg.min(inizio.elapsed());
         }
         assert!(
@@ -468,12 +490,20 @@ mod tests {
     fn qualita_alta_ha_diff_minore_di_qualita_bassa() {
         let originale = gradiente_con_dettaglio(64, 64);
         let alta = decodifica(
-            &encode(&originale, ExportFormat::Jpeg { quality: 90 }, &ExportOptions::default())
-                .expect("q90"),
+            &encode(
+                &originale,
+                ExportFormat::Jpeg { quality: 90 },
+                &ExportOptions::default(),
+            )
+            .expect("q90"),
         );
         let bassa = decodifica(
-            &encode(&originale, ExportFormat::Jpeg { quality: 30 }, &ExportOptions::default())
-                .expect("q30"),
+            &encode(
+                &originale,
+                ExportFormat::Jpeg { quality: 30 },
+                &ExportOptions::default(),
+            )
+            .expect("q30"),
         );
         let diff_alta = max_diff(&originale.rgba, &alta.rgba);
         let diff_bassa = max_diff(&originale.rgba, &bassa.rgba);
