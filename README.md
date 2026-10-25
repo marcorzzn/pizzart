@@ -22,6 +22,37 @@ stessi nomi, stessa organizzazione, stesse schermate. Quello che cambia è ciò 
 sta sotto (Rust, GPU, nessun runtime pesante) e ciò che non c'è: pubblicità,
 paywall, tracciamento, sessanta SDK di terze parti.
 
+## Build e test
+
+Prerequisiti: Rust stable (`rustup install stable`), e su Windows i Visual Studio
+Build Tools (workload "Desktop development with C++": serve a `zstd-sys` e a wgpu).
+
+```bash
+# Test (offline, veloce, nessuna GPU richiesta)
+cargo test --offline -p pizzart-core -p pizzart-draw -p pizzart-text \
+                     -p pizzart-io -p pizzart-project
+
+# Test con GPU (parita' CPU/GPU, lento)
+cargo test --offline -p pizzart-render -p pizzart-ui
+
+# Avvio UI
+cargo run --release -p pizzart-ui
+```
+
+**Nota su `Cargo.lock`**: e' committato deliberatamente. Pizzart e' un'applicazione,
+non una libreria: la build deve essere riproducibile sulla macchina dell'utente, e
+le versioni bloccate sono parte della garanzia. Se in futuro un crate verra'
+pubblicato separatamente su crates.io come libreria, quel crate avra' il suo
+`.gitignore`.
+
+**Tempi di build**: la prima `cargo build --release` richiede 3-8 minuti (dipende
+dalla CPU; con egui misurati ~18 minuti su questa macchina). Le successive sono in
+cache: 10-30 secondi.
+
+**CI**: il workflow in `.github/workflows/ci.yml` esegue i crate senza GPU su
+Windows, Linux e macOS, piu' `fmt`, `clippy -D warnings` e la guardia
+`tools/check_spec_no_dump.py` che impedisce ai dati estratti dall'app di rientrare
+nel repository.
 ## Stato
 
 | Componente | Stato |

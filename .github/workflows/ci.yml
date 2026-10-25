@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  # I crate senza GPU: girano su tutti e tre i sistemi.
+  test:
+    name: test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installa Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      # Qui NON si usa --offline: il runner parte pulito e deve scaricare
+      # le dipendenze. In locale i lockfile permettono la build offline,
+      # ma un controllo di integrita' deve partire da zero.
+      - name: Test (senza GPU)
+        run: >
+          cargo test
+          -p pizzart-core
+          -p pizzart-draw
+          -p pizzart-text
+          -p pizzart-io
+          -p pizzart-project
+
+  quality:
+    name: lint e formato (ubuntu)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installa Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - uses: Swatinem/rust-cache@v2
+
+      # Vincolo contrattuale: niente materiale dell'APK nel repository.
+      # Lo script documenta quali pattern sono vietati e perche'.
+      - name: Nessun dump dell'APK nelle specifiche
+        run: python tools/check_spec_no_dump.py
+
+      - name: Formato
+        run: cargo fmt --all --check
+
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets -- -D warnings
