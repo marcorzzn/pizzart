@@ -1,47 +1,55 @@
-# Specifiche derivate
+# Specifiche derivate — solo aggregati
 
-Questi documenti **non sono scritti a mano**: li produce `tools/gen_spec.py`
-leggendo gli artefatti dell'analisi dell'app di riferimento. Rigenerarli è un
-comando, e ogni numero nel documento è verificabile nel file JSON accanto.
+Questi numeri vengono dall'analisi dell'app di riferimento, ma nel repository
+entra **solo ciò che abbiamo prodotto noi**: conteggi e classificazioni, non il
+materiale originale.
 
-| File | Contenuto | Generato da |
-|---|---|---|
-| `schermate.md` / `.json` | 243 activity, 13 deeplink, aree funzionali, mappa delle rotte | `AndroidManifest.xml` + `apktool.yml` |
-| `effetti.md` / `.json` | 119 effetti, 109 parametri, 72 enum, nomi in 21 lingue | tabella di localizzazione degli effetti |
-| `glossario.md` | vocabolario UI minimo: 79 termini, 57 osservati nell'app | tabella delle stringhe |
+| Cosa | Quanto |
+|---|---|
+| Schermate dichiarate dal manifest | **243** activity |
+| Ingressi da deeplink | **13** |
+| Aree funzionali individuate | **9** |
+| Effetti e parametri nel catalogo | **119** effetti, **109** parametri, **72** enum |
+| Lingue coperte dal catalogo | **21** |
+| Termini del vocabolario UI | **79**, di cui **57** osservati nell'app |
+
+## Cosa non c'è, e perché
+
+Il dettaglio riga per riga — identificativi tecnici degli effetti, nomi
+localizzati, nomi delle classi Android — è un **dump** dei dati originali: non è
+una specifica nostra, è la copia di una tabella di qualcun altro. Resta fuori dal
+repository, in `_estrazione/spec_archivio/`, insieme al materiale grezzo da cui è
+tratto.
+
+Nel repository restano i **fatti** che abbiamo ricavato (quanti effetti, quante
+famiglie, che struttura hanno le schermate) perché sono ciò che serve per
+progettare un editor, e sono nostri.
 
 ## Rigenerazione
 
 ```bash
-python tools/estrai_input.py     # copia i 3 input in ../_estrazione (fuori dal repo)
-python tools/gen_spec.py         # riscrive docs/spec/
+python tools/estrai_input.py     # copia gli input in ../_estrazione (fuori dal repo)
+python tools/gen_spec.py         # riscrive il dettaglio in ../_estrazione/spec_archivio/
 ```
 
-`../_estrazione/` contiene il materiale grezzo e non va versionata: gli input si
-estrarre dagli archivi ogni volta che servono. Il motivo è semplice: nel
-repository entra solo ciò che abbiamo prodotto noi.
+Il generatore scrive **fuori** dal repository per costruzione: se un giorno
+servirà un conteggio nuovo, si aggiorna questa tabella a mano, dopo averlo
+verificato. Una specifica che si aggiorna da sola da una fonte esterna è un
+modo elegante per reintrodurre materiale di terzi senza accorgersene.
 
-## Come leggerli
+## Perché questa distinzione conta
 
-- `schermate.md` → quali schermate servono e come sono raggruppate. Una riga =
-  una schermata che l'utente si aspetta di trovare.
-- `effetti.md` → quali effetti esistono e come si chiamano. La colonna
-  *implementato* è lo stato di avanzamento del modulo effetti.
-- `glossario.md` → come chiamare le cose nell'interfaccia, per non costringere
-  nessuno a imparare una nuova terminologia.
+Un capitolato funzionale ("l'utente si aspetta una sfocatura gaussiana con
+raggio e soglia") è un'idea, e le idee non sono soggette a copyright. Un elenco
+di 300 identificativi con le rispettive traduzioni è una collezione di dati
+altrui. La differenza non è formale: la prima la usi per progettare, la seconda
+la stai ridistribuendo.
 
-## Limiti dichiarati
+## Un dettaglio dichiarato
 
-Sono documenti onesti, con i loro buchi scritti dentro:
-
-- Le **famiglie degli effetti** sono euristiche sul nome tecnico: raggruppano per
-  lavoro simile, non pretendono di indovinare le formule. Il catalogo dice
-  *quali* effetti esistono, non *come* sono fatti.
-- L'**italiano è una scelta di prodotto**: l'app analizzata non include la locale
-  italiana in questa build (39 cartelle `values*`, nessuna `values-it`), quindi
-  il confronto EN↔IT è possibile solo come terminologia di categoria.
-- Le **aree funzionali** derivano dal nome del package con regole deterministiche
-  (`AREE` in `gen_spec.py`): alcune schermate restano in "Altro" e sono elencate
-  come tali invece di essere forzate.
-- Il **perimetro esclude** pubblicità, abbonamento, social, store e mini-app.
-  È un'assunzione di prodotto, una riga di codice, e si può ribaltare.
+`tools/gen_spec.py` contiene **una** stringa dell'app di riferimento:
+il prefisso `effect_param_`, usato per decidere se una voce del catalogo è un
+parametro o un effetto. Non è un dato estratto ma una regola di classificazione,
+e non rivela nulla che non sia visibile usando l'app. È l'unica occorrenza:
+verificata con una scansione di tutti i file versionati (`com.picsart.`,
+`effect_*`).

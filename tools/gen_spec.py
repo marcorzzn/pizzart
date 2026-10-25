@@ -12,7 +12,11 @@ Cosa fa e cosa non fa:
 Uso:
     python tools/gen_spec.py [--input CARTELLA] [--out CARTELLA]
 
-Default: --input ../../_estrazione   --out ../docs/spec
+Default: --input ../../_estrazione   --out ../../_estrazione/spec_archivio
+
+Il dettaglio generato (identificativi, nomi localizzati, classi Android) resta
+FUORI dal repository: nel repo entra solo docs/spec/README.md con i conteggi,
+scritto a mano. Vedi la ragione in quel file.
 """
 
 from __future__ import annotations
@@ -635,7 +639,9 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--input", default=str(root.parent / "_estrazione"),
                     help="cartella con AndroidManifest.xml, localEffectsLib.txt, strings.xml")
-    ap.add_argument("--out", default=str(root / "docs" / "spec"))
+    ap.add_argument(
+        "--out", default=str(root.parent / "_estrazione" / "spec_archivio")
+    )
     args = ap.parse_args()
 
     src = Path(args.input)

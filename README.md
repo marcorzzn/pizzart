@@ -1,9 +1,20 @@
 # pizzart
 
+MIT — vedi [LICENSE](LICENSE). Copyright (c) 2025 Marco Razzano.
+
 Editor grafico professionale in Rust. Non è un port di Picsart: è un editor
 pensato per essere più veloce e più estendibile, con le funzioni che servono e
 senza quello che non serve.
 
+## Posizione sul progetto originale
+
+Pizzart è un editor **clean-room**: l'analisi dell'APK di Picsart (in
+`_estrazione/`, fuori dal repository) è servita esclusivamente come
+**capitolato funzionale** — quali schermate, quali effetti, quali strumenti
+un utente si aspetta. Non è stato tradotto né riusato codice, non sono stati
+copiati asset (icone, font, texture), non è stata replicata l'interfaccia
+pixel per pixel. Le specifiche in `docs/spec/` sono **fatti aggregati**
+(quanti effetti, quante famiglie), non dump di stringhe originali.
 ## Perché
 
 Un utente Picsart deve poter aprire pizzart e **riconoscere** gli strumenti:
