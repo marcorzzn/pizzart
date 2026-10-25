@@ -131,7 +131,7 @@ fn valida_qualita(quality: u8) -> Result<(), ExportError> {
 
 /// C'è almeno un pixel non completamente opaco?
 fn has_alpha(image: &RenderedImage) -> bool {
-    image.rgba.chunks_exact(4).any(|px| px[3] < 255)
+    image.rgba.as_chunks::<4>().0.iter().any(|px| px[3] < 255)
 }
 
 /// Converte in RGB opaco, componendo su un fondo se serve.
@@ -142,7 +142,7 @@ fn to_rgb(image: &RenderedImage, options: &ExportOptions) -> Result<Vec<u8>, Exp
     }
     let fondo = options.background.unwrap_or([255, 255, 255]);
     let mut rgb = Vec::with_capacity(image.rgba.len() / 4 * 3);
-    for px in image.rgba.chunks_exact(4) {
+    for px in image.rgba.as_chunks::<4>().0 {
         let a = px[3] as u32;
         if a == 255 {
             rgb.extend_from_slice(&px[0..3]);
@@ -228,8 +228,10 @@ mod tests {
     }
 
     fn max_diff(a: &[u8], b: &[u8]) -> u8 {
-        a.chunks_exact(4)
-            .zip(b.chunks_exact(4))
+        a.as_chunks::<4>()
+            .0
+            .iter()
+            .zip(b.as_chunks::<4>().0.iter())
             .flat_map(|(x, y)| (0..4).map(move |c| x[c].abs_diff(y[c])))
             .max()
             .unwrap_or(0)

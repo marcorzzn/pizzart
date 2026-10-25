@@ -19,7 +19,7 @@ use crate::image::PlacedImage;
 use crate::layer::LayerId;
 
 /// Da dove viene una maschera. Non cambia la composizione: serve alla UI e al debug.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Default)]
 pub enum MaskSource {
     /// Da uno strumento di selezione (rettangolo, lazo, bacchetta magica).
     Selection,
@@ -28,6 +28,7 @@ pub enum MaskSource {
     /// Da una tessera qualsiasi: testo, forma, tratto, immagine.
     FromTile,
     /// Generata: gradiente, rumore, pennello (futuro).
+    #[default]
     Procedural,
 }
 
@@ -90,7 +91,7 @@ impl Mask {
     /// automatico del campionamento.
     pub fn from_tile(tile: &PlacedImage) -> Self {
         let mut alpha = Vec::with_capacity(tile.pixel_count());
-        for px in tile.rgba.chunks_exact(4) {
+        for px in tile.rgba.as_chunks::<4>().0 {
             alpha.push(px[3]);
         }
         Self {
@@ -176,12 +177,6 @@ impl Mask {
     /// Byte totali (per stimare la memoria occupata).
     pub fn byte_len(&self) -> usize {
         self.alpha.len()
-    }
-}
-
-impl Default for MaskSource {
-    fn default() -> Self {
-        MaskSource::Procedural
     }
 }
 

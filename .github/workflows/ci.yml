@@ -61,11 +61,7 @@ jobs:
       - name: Formato
         run: cargo fmt --all --check
 
-      # Clippy segnala ma non blocca: il codice ha ancora 9 lint noti in
-      # `core` (self arbitrari, `chunks_exact` con dimensione costante, impl
-      # derivabile, lifetime elidibili, un cast ridondante). Quando saranno
-      # chiusi, togliere `continue-on-error` e restaurare `-D warnings`:
-      # il gate rigido ha senso solo quando passa.
-      - name: Clippy (non bloccante finché il debito è aperto)
-        continue-on-error: true
+      # Gate rigido: zero warning. Se serve disattivare un lint, va fatto in
+      # locale con `#[allow]` e una motivazione, non allentando il CI.
+      - name: Clippy
         run: cargo clippy --workspace --all-targets -- -D warnings

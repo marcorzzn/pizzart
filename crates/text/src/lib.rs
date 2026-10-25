@@ -269,8 +269,8 @@ impl Text {
         }
 
         let mut rgba = vec![0u8; pixels * 4];
-        for i in 0..pixels {
-            let coverage = mask[i] as u32;
+        for (i, copertura) in mask.iter().enumerate() {
+            let coverage = *copertura as u32;
             let alpha = (coverage * color[3] as u32) / 255;
             let at = i * 4;
             if alpha > 0 {
@@ -366,7 +366,7 @@ mod tests {
         assert!(!tile.is_empty(), "il testo deve produrre pixel");
 
         let mut trovati = 0;
-        for px in tile.rgba.chunks_exact(4) {
+        for px in tile.rgba.as_chunks::<4>().0 {
             if px[3] > 0 {
                 trovati += 1;
                 assert_eq!(px[0], 200, "canale R");

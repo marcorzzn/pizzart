@@ -25,8 +25,10 @@ fn main() {
     println!("   backends richiesti: {backends:?}");
 
     println!("2. creazione instance");
-    let mut desc = wgpu::InstanceDescriptor::default();
-    desc.backends = backends;
+    let desc = wgpu::InstanceDescriptor {
+        backends,
+        ..Default::default()
+    };
     let instance = wgpu::Instance::new(desc);
     println!("   instance creata");
 

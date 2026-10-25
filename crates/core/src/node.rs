@@ -169,7 +169,7 @@ impl Group {
 }
 
 /// Cerca un nodo per identificativo, in tutto l'albero.
-pub fn find<'a>(nodes: &'a [Node], id: LayerId) -> Option<&'a Node> {
+pub fn find(nodes: &[Node], id: LayerId) -> Option<&Node> {
     for node in nodes {
         if node.id() == id {
             return Some(node);
@@ -184,7 +184,7 @@ pub fn find<'a>(nodes: &'a [Node], id: LayerId) -> Option<&'a Node> {
 }
 
 /// Cerca un nodo mutabile, in tutto l'albero.
-pub fn find_mut<'a>(nodes: &'a mut [Node], id: LayerId) -> Option<&'a mut Node> {
+pub fn find_mut(nodes: &mut [Node], id: LayerId) -> Option<&mut Node> {
     for node in nodes.iter_mut() {
         if node.id() == id {
             return Some(node);
@@ -221,10 +221,7 @@ pub fn position_of(nodes: &[Node], id: LayerId) -> Option<usize> {
 }
 
 /// Il vettore di nodi di un contenitore (radice o gruppo).
-pub fn container_mut<'a>(
-    nodes: &'a mut Vec<Node>,
-    parent: Option<LayerId>,
-) -> Option<&'a mut Vec<Node>> {
+pub fn container_mut(nodes: &mut Vec<Node>, parent: Option<LayerId>) -> Option<&mut Vec<Node>> {
     match parent {
         None => Some(nodes),
         Some(id) => match find_mut(nodes, id)? {

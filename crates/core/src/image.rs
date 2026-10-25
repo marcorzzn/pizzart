@@ -155,10 +155,7 @@ mod tests {
         img.blit_into(&mut dst, 2, 2);
         // solo il quadrante in basso a destra finisce dentro
         assert_eq!(&dst[0..4], &[255, 255, 255, 255]);
-        assert_eq!(
-            &dst[(1 * 2 + 1) * 4..(1 * 2 + 1) * 4 + 4],
-            &[255, 255, 255, 255]
-        );
+        assert_eq!(&dst[(2 + 1) * 4..(2 + 1) * 4 + 4], &[255, 255, 255, 255]);
     }
 
     #[test]

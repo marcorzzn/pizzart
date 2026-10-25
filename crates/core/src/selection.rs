@@ -37,7 +37,7 @@ where
         return alpha;
     }
     let step = 1.0 / SAMPLES as f32;
-    let total = (SAMPLES * SAMPLES) as u32;
+    let total = SAMPLES * SAMPLES;
     for y in 0..doc_h {
         for x in 0..doc_w {
             let mut hits = 0u32;

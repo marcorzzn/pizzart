@@ -57,7 +57,7 @@ fn main() {
     let larghezza = PANEL * pannelli + GAP * (pannelli + 1);
     let altezza = PANEL + GAP * 2;
     let mut tela = vec![0u8; (larghezza * altezza * 4) as usize];
-    for px in tela.chunks_exact_mut(4) {
+    for px in tela.as_chunks_mut::<4>().0.iter_mut() {
         px.copy_from_slice(&[22, 24, 30, 255]);
     }
     for (i, img) in [piatto, con_gruppo, appiattito].into_iter().enumerate() {
@@ -128,6 +128,7 @@ fn max_diff(a: &[u8], b: &[u8]) -> (u8, usize) {
     (massimo, dove)
 }
 
+#[allow(clippy::too_many_arguments)] // helper di disegno in un esempio: 8 argomenti sono il minimo per essere esplicito
 fn blit(src: &[u8], sw: u32, sh: u32, dst: &mut [u8], dw: u32, dh: u32, ox: i32, oy: i32) {
     for y in 0..sh {
         let dy = oy + y as i32;

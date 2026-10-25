@@ -82,7 +82,7 @@ fn main() {
     let larghezza = PANEL * pannelli + GAP * (pannelli + 1);
     let altezza = PANEL + GAP * 2;
     let mut tela = vec![0u8; (larghezza * altezza * 4) as usize];
-    for px in tela.chunks_exact_mut(4) {
+    for px in tela.as_chunks_mut::<4>().0.iter_mut() {
         px.copy_from_slice(&[22, 24, 30, 255]);
     }
 

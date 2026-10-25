@@ -164,7 +164,7 @@ fn write_ppm(path: &str, w: u32, h: u32, rgba: &[u8]) -> std::io::Result<()> {
     use std::io::Write;
     let mut out = Vec::with_capacity((w * h * 3 + 32) as usize);
     out.extend_from_slice(format!("P6\n{w} {h}\n255\n").as_bytes());
-    for chunk in rgba.chunks_exact(4) {
+    for chunk in rgba.as_chunks::<4>().0.iter() {
         out.extend_from_slice(&chunk[0..3]);
     }
     std::fs::File::create(path)?.write_all(&out)

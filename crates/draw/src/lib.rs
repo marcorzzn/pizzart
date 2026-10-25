@@ -574,7 +574,7 @@ mod tests {
     }
 
     fn coperti(buf: &[u8]) -> usize {
-        buf.chunks_exact(4).filter(|p| p[3] > 0).count()
+        buf.as_chunks::<4>().0.iter().filter(|p| p[3] > 0).count()
     }
 
     #[test]
@@ -760,7 +760,9 @@ mod tests {
             let mut s = Stroke::new(Brush::new(24.0).hardness(hardness));
             s.add(Point::new(32.0, 32.0));
             s.render(64, 64)
-                .chunks_exact(4)
+                .as_chunks::<4>()
+                .0
+                .iter()
                 .filter(|p| p[3] > 0 && p[3] < 255)
                 .count()
         };

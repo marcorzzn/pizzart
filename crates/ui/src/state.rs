@@ -107,7 +107,7 @@ impl Editor {
     // -----------------------------------------------------------------
 
     /// Apre un'immagine e la mette come fondo del documento.
-    pub fn open_image(&mut self, path: &PathBuf) -> Result<(), String> {
+    pub fn open_image(&mut self, path: &std::path::Path) -> Result<(), String> {
         let img = image::open(path).map_err(|e| format!("apertura {}: {e}", path.display()))?;
         let rgba = img.to_rgba8();
         let (w, h) = (rgba.width(), rgba.height());
@@ -189,18 +189,18 @@ impl Editor {
     }
 
     /// Apre un progetto `.pizzart`.
-    pub fn open_project(&mut self, path: &PathBuf) -> Result<(), String> {
+    pub fn open_project(&mut self, path: &std::path::Path) -> Result<(), String> {
         let doc = load(path).map_err(|e| e.to_string())?;
         self.selected = doc.root.first().map(|n| n.id());
         self.doc = doc;
-        self.path = Some(path.clone());
+        self.path = Some(path.to_path_buf());
         self.needs_recompose = true;
         self.status = format!("progetto aperto: {}", path.display());
         Ok(())
     }
 
     /// Apre un file qualsiasi: `.pizzart` come progetto, il resto come immagine.
-    pub fn open(&mut self, path: &PathBuf) -> Result<(), String> {
+    pub fn open(&mut self, path: &std::path::Path) -> Result<(), String> {
         let progetto = path
             .extension()
             .map(|e| e.eq_ignore_ascii_case("pizzart"))
@@ -213,9 +213,9 @@ impl Editor {
     }
 
     /// Salva il progetto nel percorso dato (e lo ricorda).
-    pub fn save_project(&mut self, path: &PathBuf) -> Result<(), String> {
+    pub fn save_project(&mut self, path: &std::path::Path) -> Result<(), String> {
         save(&self.doc, path, &SaveOptions::default()).map_err(|e| e.to_string())?;
-        self.path = Some(path.clone());
+        self.path = Some(path.to_path_buf());
         self.status = format!("salvato {}", path.display());
         Ok(())
     }
@@ -232,7 +232,7 @@ impl Editor {
     }
 
     /// Esporta il composito in PNG.
-    pub fn export_png(&mut self, path: &PathBuf) -> Result<(), String> {
+    pub fn export_png(&mut self, path: &std::path::Path) -> Result<(), String> {
         let (rgba, w, h) = self.composite_rgba();
         let img = pizzart_render::RenderedImage {
             width: w,
@@ -490,7 +490,7 @@ impl Editor {
         if self.stroke_points.is_empty() {
             return None;
         }
-        let mut stroke = Stroke::new(self.brush.clone());
+        let mut stroke = Stroke::new(self.brush);
         for p in self.stroke_points.drain(..) {
             stroke.add(p);
         }

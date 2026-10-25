@@ -291,7 +291,10 @@ mod tests {
     #[test]
     fn mask_empty_nasconde_tutto() {
         let out = doc_con_maschera(Mask::empty(4, 4)).composite();
-        assert!(out.chunks_exact(4).all(|p| p[3] == 0), "tutto nascosto");
+        assert!(
+            out.as_chunks::<4>().0.iter().all(|p| p[3] == 0),
+            "tutto nascosto"
+        );
     }
 
     #[test]

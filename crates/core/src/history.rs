@@ -617,7 +617,7 @@ impl FlattenGroup {
     }
 
     /// Applica e restituisce l'identificativo del nuovo layer.
-    pub fn do_apply(self: &mut Self, doc: &mut Document) -> Result<LayerId, LayerError> {
+    pub fn do_apply(&mut self, doc: &mut Document) -> Result<LayerId, LayerError> {
         let Some(gruppo) = doc.group(self.group).cloned() else {
             return Err(LayerError::NotAGroup);
         };
@@ -702,7 +702,7 @@ impl CreateGroup {
     }
 
     /// Applica e restituisce l'identificativo del gruppo creato.
-    pub fn do_apply(self: &mut Self, doc: &mut Document) -> Result<LayerId, LayerError> {
+    pub fn do_apply(&mut self, doc: &mut Document) -> Result<LayerId, LayerError> {
         let children = doc
             .children_of(self.parent)
             .ok_or(LayerError::InvalidTarget)?;
@@ -773,7 +773,7 @@ impl Ungroup {
         }
     }
 
-    pub fn do_apply(self: &mut Self, doc: &mut Document) -> Result<(), LayerError> {
+    pub fn do_apply(&mut self, doc: &mut Document) -> Result<(), LayerError> {
         let Some(gruppo) = doc.group(self.group).cloned() else {
             return Err(LayerError::NotAGroup);
         };

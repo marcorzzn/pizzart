@@ -1949,7 +1949,7 @@ mod tests {
 
     fn grigio(valore: u8, lato: u32) -> pizzart_core::PlacedImage {
         let mut t = tile_di_prova(lato, lato);
-        for px in t.rgba.chunks_exact_mut(4) {
+        for px in t.rgba.as_chunks_mut::<4>().0.iter_mut() {
             px[0] = valore;
             px[1] = valore;
             px[2] = valore;
@@ -2014,7 +2014,7 @@ mod tests {
             .apply_effects(&base, &[Effect::saturate(-1.0)])
             .expect("desatura");
 
-        for px in out.rgba.chunks_exact(4) {
+        for px in out.rgba.as_chunks::<4>().0.iter() {
             let (r, g, b) = (px[0] as i32, px[1] as i32, px[2] as i32);
             assert!(
                 (r - g).abs() <= 1 && (g - b).abs() <= 1,
@@ -2252,7 +2252,13 @@ mod tests {
         }
 
         // l'energia si conserva (kernel normalizzato), entro la quantizzazione
-        let somma: f64 = out.rgba.chunks_exact(4).map(|p| p[0] as f64).sum();
+        let somma: f64 = out
+            .rgba
+            .as_chunks::<4>()
+            .0
+            .iter()
+            .map(|p| p[0] as f64)
+            .sum();
         let attesa = (lato * lato) as f64 * 255.0 / (lato * lato) as f64; // 255 totale
         assert!(
             (somma - attesa).abs() < attesa * 0.15,
@@ -2287,7 +2293,7 @@ mod tests {
         let out = renderer
             .apply_effects(&base, &[Effect::blur(6.0)])
             .expect("blur");
-        for (i, px) in out.rgba.chunks_exact(4).enumerate() {
+        for (i, px) in out.rgba.as_chunks::<4>().0.iter().enumerate() {
             assert!(
                 (px[0] as i32 - 128).abs() <= 1,
                 "pixel {i} è {} invece di 128",
@@ -2727,7 +2733,7 @@ mod tests {
 
         // lontano dal bordo non cambia nulla
         assert!(
-            (luminanza(&out, 2, lato / 2) as i32 - 64).abs() <= 1,
+            (luminanza(&out, 2, lato / 2) - 64).abs() <= 1,
             "il centro della zona scura deve restare 64"
         );
     }
@@ -2742,7 +2748,7 @@ mod tests {
         let out = renderer
             .apply_effects(&base, &[Effect::sharpen(1.0, 6.0)])
             .expect("sharpen");
-        for (i, px) in out.rgba.chunks_exact(4).enumerate() {
+        for (i, px) in out.rgba.as_chunks::<4>().0.iter().enumerate() {
             assert!(
                 (px[0] as i32 - 128).abs() <= 1,
                 "pixel {i} è {} invece di 128: un'uniforme non deve cambiare",
@@ -2806,7 +2812,7 @@ mod tests {
         let out = renderer
             .apply_effects(&base, &[Effect::glow(0.5, 2.0, 6.0)])
             .expect("glow");
-        for (i, px) in out.rgba.chunks_exact(4).enumerate() {
+        for (i, px) in out.rgba.as_chunks::<4>().0.iter().enumerate() {
             assert!(
                 (px[0] as i32 - 20).abs() <= 1,
                 "pixel {i} è {} invece di 20: sotto soglia non deve cambiare",

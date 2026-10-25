@@ -465,10 +465,8 @@ impl PizzartApp {
 impl eframe::App for PizzartApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         // consegna della decodifica in corso, se e' pronta
-        if let Some(esito) = self.editor.poll_loading() {
-            if let Err(e) = esito {
-                self.errore = Some(e);
-            }
+        if let Some(Err(e)) = self.editor.poll_loading() {
+            self.errore = Some(e);
         }
         self.menu(ctx);
         self.scorciatoie(ctx);
