@@ -12,6 +12,14 @@ _estrazione/
 export_demo.jpg
 export_demo.webp
 
+# Output di debug e sonde (non sono deliverable)
+output.png
+output.ppm
+ui-err.txt
+ui-out.txt
+mem_err.txt
+mem_out.txt
+
 # Sistema
 .DS_Store
 Thumbs.db
