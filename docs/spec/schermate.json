@@ -1,0 +1,2670 @@
+{
+  "package": "com.picsart.studio",
+  "activities": [
+    {
+      "class": "com.picsart.deeplink.DeepLinkNativeActivity",
+      "short": "DeepLinkNativeActivity",
+      "exported": "",
+      "area": "Deeplink / ingresso",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.embedded.editor.impl.WebEditorMainActivity",
+      "short": "WebEditorMainActivity",
+      "exported": "",
+      "area": "Web embedded",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.deeplink.DeepLinkActivity",
+      "short": "DeepLinkActivity",
+      "exported": "true",
+      "area": "Deeplink / ingresso",
+      "actions": [
+        "android.intent.action.VIEW",
+        "android.intent.action.SEND"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "picsart",
+          "host": "",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "u",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "device-notification-settings",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "edit_profile",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "profile_update",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "notifications",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "notification-settings",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "explore",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "open",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "feed",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "image_report",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "fblogin",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "open_component",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "play-market-rate",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "invite",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "discoverartists",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "findcontacts",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "findfbfriends",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "draw",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "subscription",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "settings",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "comment",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "camera",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "create_flow",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "magic_link",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "suggested_edits",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "onboard_iq",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "search",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "spaces",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "tags",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "users",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "collections",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "find_friends",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "challenges",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "shop",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "photos",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "activity",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "sign-in",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "sign-up",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "video",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "video-editor",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "next-gen-video",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "i",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "mini_app/content",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "mini_app/publish",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "text_2_image",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "hashtag",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "editor",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "frame",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "frames",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "replay",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "template",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "template-editor",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "template-chooser",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "freestyle",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "grid",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "collage",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "collages",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "collage-free-style",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "apps",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "blooper",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "files",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "miniapp_2_editor",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "drive_storage",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "home",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "web-embedded",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "prompt-rateus",
+          "path": ""
+        },
+        {
+          "scheme": "picsart",
+          "host": "share",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "picsart.com",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "www.picsart.com",
+          "path": ""
+        },
+        {
+          "scheme": "",
+          "host": "picsart.go.link",
+          "path": ""
+        },
+        {
+          "scheme": "http",
+          "host": "",
+          "path": ""
+        },
+        {
+          "scheme": "https",
+          "host": "",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.editor.video.VideoNewActivity",
+      "short": "VideoNewActivity",
+      "exported": "true",
+      "area": "Video",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.video.blooper.BlooperActivity",
+      "short": "BlooperActivity",
+      "exported": "true",
+      "area": "Video",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.editor.deeplink.CollageHandler",
+      "short": "CollageHandler",
+      "exported": "",
+      "area": "Deeplink / ingresso",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.preference.settings.ShowSettingsActivity",
+      "short": "ShowSettingsActivity",
+      "exported": "false",
+      "area": "Impostazioni",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.editor.deeplink.TemplateHandler",
+      "short": "TemplateHandler",
+      "exported": "",
+      "area": "Deeplink / ingresso",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.editor.deeplink.EditorHandler",
+      "short": "EditorHandler",
+      "exported": "",
+      "area": "Deeplink / ingresso",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.editor.deeplink.FreestyleHandler",
+      "short": "FreestyleHandler",
+      "exported": "",
+      "area": "Deeplink / ingresso",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.editor.deeplink.GridHandler",
+      "short": "GridHandler",
+      "exported": "",
+      "area": "Deeplink / ingresso",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.video.VideoHandler",
+      "short": "VideoHandler",
+      "exported": "",
+      "area": "Video",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.editor.deeplink.ReplayHandler",
+      "short": "ReplayHandler",
+      "exported": "",
+      "area": "Deeplink / ingresso",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.deeplinking.miniapps.MiniAppHandler",
+      "short": "MiniAppHandler",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.deeplinking.BlooperHandler",
+      "short": "BlooperHandler",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.deeplinking.VideoShareHandler",
+      "short": "VideoShareHandler",
+      "exported": "true",
+      "area": "Editor (superficie principale)",
+      "actions": [
+        "android.intent.action.SEND",
+        "android.intent.action.SEND_MULTIPLE"
+      ],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.picsinphoto.MainActivity",
+      "short": "MainActivity",
+      "exported": "true",
+      "area": "Editor (superficie principale)",
+      "actions": [
+        "android.intent.action.SEND_MULTIPLE",
+        "android.intent.action.SEND",
+        "android.intent.action.EDIT",
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "picsartphotostudio",
+          "host": "",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.picsinphoto.MainPagerActivity",
+      "short": "MainPagerActivity",
+      "exported": "true",
+      "area": "Editor (superficie principale)",
+      "actions": [
+        "android.intent.action.MAIN",
+        "com.sec.android.airview.HOVER"
+      ],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.ads.NativeInterstitialActivity",
+      "short": "NativeInterstitialActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.ads.FullscreenHouseAdActivity",
+      "short": "FullscreenHouseAdActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.editor.tools.addobjects.callout.AddEditCalloutActivity",
+      "short": "AddEditCalloutActivity",
+      "exported": "",
+      "area": "Oggetti (testo, sticker, forme)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.lensflare.SelectLensFlareActivity",
+      "short": "SelectLensFlareActivity",
+      "exported": "",
+      "area": "Oggetti (testo, sticker, forme)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.editor.tools.addobjects.text.ui.activities.AddTextEditActivity",
+      "short": "AddTextEditActivity",
+      "exported": "",
+      "area": "Oggetti (testo, sticker, forme)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.draw.textart.SelectClipArtFrameActivity",
+      "short": "SelectClipArtFrameActivity",
+      "exported": "",
+      "area": "Disegno",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.tools.ResizeDialogActivity",
+      "short": "ResizeDialogActivity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.dialog.CancelDialogActivity",
+      "short": "CancelDialogActivity",
+      "exported": "",
+      "area": "Dialoghi",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.preference.PreferencesActivity",
+      "short": "PreferencesActivity",
+      "exported": "true",
+      "area": "Impostazioni",
+      "actions": [
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "picsartphotostudio",
+          "host": "oauth-success",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.notifications.settings.NotificationsPreferencesActivity",
+      "short": "NotificationsPreferencesActivity",
+      "exported": "",
+      "area": "Impostazioni",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.preference.FBActionPreferencesActivity",
+      "short": "FBActionPreferencesActivity",
+      "exported": "",
+      "area": "Impostazioni",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.preference.OnBoardingPreferencesActivity",
+      "short": "OnBoardingPreferencesActivity",
+      "exported": "",
+      "area": "Impostazioni",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.preference.chooser.ChooserPreferencesActivity",
+      "short": "ChooserPreferencesActivity",
+      "exported": "",
+      "area": "Libreria / importazione",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.preference.editor.EditorPreferencesActivity",
+      "short": "EditorPreferencesActivity",
+      "exported": "",
+      "area": "Impostazioni",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.preference.AdsPreferenceActivity",
+      "short": "AdsPreferenceActivity",
+      "exported": "",
+      "area": "Impostazioni",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.draw.DrawingActivity",
+      "short": "DrawingActivity",
+      "exported": "",
+      "area": "Disegno",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.draw.DrawProjectsActivity",
+      "short": "DrawProjectsActivity",
+      "exported": "",
+      "area": "Disegno",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.draw.DrawProjectSyncActivity",
+      "short": "DrawProjectSyncActivity",
+      "exported": "",
+      "area": "Disegno",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.draw.background.DrawBackgroundsActivity",
+      "short": "DrawBackgroundsActivity",
+      "exported": "",
+      "area": "Disegno",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.picsinphoto.StudioActivity",
+      "short": "StudioActivity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.draw.VideoPreviewActivity",
+      "short": "VideoPreviewActivity",
+      "exported": "",
+      "area": "Disegno",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.photo.draw.dialog.SelectShapeDialogNew",
+      "short": "SelectShapeDialogNew",
+      "exported": "",
+      "area": "Disegno",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.editor.tool.gif.GifExportActivity",
+      "short": "GifExportActivity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.widget.ReplayWidgetConfig",
+      "short": "ReplayWidgetConfig",
+      "exported": "false",
+      "area": "Editor (superficie principale)",
+      "actions": [
+        "android.appwidget.action.APPWIDGET_CONFIGURE"
+      ],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.activity.InfoDialogActivity",
+      "short": "InfoDialogActivity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.facebook.FacebookActivity",
+      "short": "FacebookActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.facebook.activity.FacebookAdapterActivity",
+      "short": "FacebookAdapterActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.kakao.sdk.auth.AuthCodeHandlerActivity",
+      "short": "AuthCodeHandlerActivity",
+      "exported": "true",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "kakao1f43f170569b8e08b9fbdade822ddaf8",
+          "host": "oauth",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.vkontakte.VKAuthActivity",
+      "short": "VKAuthActivity",
+      "exported": "false",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.google.GoogleSignInActivity",
+      "short": "GoogleSignInActivity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.DeutscheTelekomActivity",
+      "short": "DeutscheTelekomActivity",
+      "exported": "true",
+      "area": "Altro",
+      "actions": [
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "picsart",
+          "host": "telekom",
+          "path": "/app"
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.oauth2.google.GoogleOauth2Activity",
+      "short": "GoogleOauth2Activity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.dropbox.DropboxActivity",
+      "short": "DropboxActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.dropbox.core.android.AuthActivity",
+      "short": "AuthActivity",
+      "exported": "true",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "db-qz0ubwmycfmwyj3",
+          "host": "",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.GalleryItemShowActivity",
+      "short": "GalleryItemShowActivity",
+      "exported": "false",
+      "area": "Account",
+      "actions": [
+        "android.intent.action.MAIN"
+      ],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.CommentsActivity",
+      "short": "CommentsActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.RepliesActivity",
+      "short": "RepliesActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.CommentImageZoomActivity",
+      "short": "CommentImageZoomActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.ProfileSettingsActivity",
+      "short": "ProfileSettingsActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.UserAvatarUploadActivity",
+      "short": "UserAvatarUploadActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.profile.view.ProfileActivity",
+      "short": "ProfileActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.collections.CollectionActivity",
+      "short": "CollectionActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.profile.collections.activity.UserCollectionsActivity",
+      "short": "UserCollectionsActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.collections.CreateCollectionActivity",
+      "short": "CreateCollectionActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.ProfileConnectionsActivity",
+      "short": "ProfileConnectionsActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.social.activity.SocialConnectionsActivity",
+      "short": "SocialConnectionsActivity",
+      "exported": "",
+      "area": "Social (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.WebViewActivity",
+      "short": "WebViewActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.SimplePhotoActivity",
+      "short": "SimplePhotoActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.FindFriendsActivity",
+      "short": "FindFriendsActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.search.ui.SearchActivity",
+      "short": "SearchActivity",
+      "exported": "",
+      "area": "Ricerca",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.profile.dialogs.imagereport.ReportMiniAppActivity",
+      "short": "ReportMiniAppActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.spaces.impl.presenter.spacespage.SpacesMiniappActivity",
+      "short": "SpacesMiniappActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.profile.dashboard.activity.DashboardActivity",
+      "short": "DashboardActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.profile.dashboard.activity.DashboardTopsActivity",
+      "short": "DashboardTopsActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.camera.CameraResultHandlerActivity",
+      "short": "CameraResultHandlerActivity",
+      "exported": "",
+      "area": "Fotocamera",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android_samsung_billing_lib.SamsungPurchaseActivity",
+      "short": "SamsungPurchaseActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android_samsung_billing_lib.SamsungGetPricesActivity",
+      "short": "SamsungGetPricesActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.editor.tool.effect.StandaloneEffectActivity",
+      "short": "StandaloneEffectActivity",
+      "exported": "",
+      "area": "Effetti",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.inmobi.androidsdk.IMBrowserActivity",
+      "short": "IMBrowserActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.google.ads.AdActivity",
+      "short": "AdActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.google.android.gms.ads.AdActivity",
+      "short": "AdActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.facebook.ads.InterstitialAdActivity",
+      "short": "InterstitialAdActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.facebook.ads.VideoAdActivity",
+      "short": "VideoAdActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.editor.main.EditorActivity",
+      "short": "EditorActivity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.editor.main.EditorAutoApplyActivity",
+      "short": "EditorAutoApplyActivity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.editor.tool.crop.StandaloneCropToolActivity",
+      "short": "StandaloneCropToolActivity",
+      "exported": "",
+      "area": "Ritaglio / formato",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.profile.FindArtistsActivity",
+      "short": "FindArtistsActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.challenge.main.ChallengesMainActivity",
+      "short": "ChallengesMainActivity",
+      "exported": "",
+      "area": "Social (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.ContactsActivity",
+      "short": "ContactsActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.createflow.view.CreateFlowActivity",
+      "short": "CreateFlowActivity",
+      "exported": "",
+      "area": "Creazione guidata",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.growth.terms.presenter.TermsAndConditionsActivity",
+      "short": "TermsAndConditionsActivity",
+      "exported": "",
+      "area": "Onboarding",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.InviteFriendsMainActivity",
+      "short": "InviteFriendsMainActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.profile.UserListActivity",
+      "short": "UserListActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.preference.ContactSyncedActivity",
+      "short": "ContactSyncedActivity",
+      "exported": "",
+      "area": "Impostazioni",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.InviteFriendsAdditionalActivity",
+      "short": "InviteFriendsAdditionalActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.auth.impl.PicsartAuthenticatorActivity",
+      "short": "PicsartAuthenticatorActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.auth.impl.privacy.presenter.signin.view.PrivacyActivity",
+      "short": "PrivacyActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.picsart.profile.activity.AllStickersActivity",
+      "short": "AllStickersActivity",
+      "exported": "",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.shopNew.activity.SubscriptionContactUsActivity",
+      "short": "SubscriptionContactUsActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.payment.impl.subscription.ui.ShopSubscribeActivity",
+      "short": "ShopSubscribeActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.shopNew.activity.SubscriptionRestoreActivity",
+      "short": "SubscriptionRestoreActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.shopNew.activity.ShopTransparentActivity",
+      "short": "ShopTransparentActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.winback.WinbackTransparentActivity",
+      "short": "WinbackTransparentActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.fakesubs.FakeSubscriptionActivity",
+      "short": "FakeSubscriptionActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.cancellation.CancellationFlowActivity",
+      "short": "CancellationFlowActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.shopNew.activity.SubscriptionTransparentActivity",
+      "short": "SubscriptionTransparentActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.ads.lib.AdPresentationActivity",
+      "short": "AdPresentationActivity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.socialin.android.preference.SubscriptionPreferencesActivity",
+      "short": "SubscriptionPreferencesActivity",
+      "exported": "",
+      "area": "Impostazioni",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.shopNew.activity.SubscriptionInviteFriendsActivity",
+      "short": "SubscriptionInviteFriendsActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.shopNew.activity.IncentivisedInvitesThankYouActivity",
+      "short": "IncentivisedInvitesThankYouActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.shopNew.activity.SubscriptionRegFlowFullScreenActivity",
+      "short": "SubscriptionRegFlowFullScreenActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.winback.SubscriptionStoreRedirectActivity",
+      "short": "SubscriptionStoreRedirectActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.ads.SplashHouseAdActivity",
+      "short": "SplashHouseAdActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.grace.GraceOnHoldActivity",
+      "short": "GraceOnHoldActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.grace.GraceScreenActivity",
+      "short": "GraceScreenActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.gold.SubGoldFAQActivity",
+      "short": "SubGoldFAQActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.goldnew.RetentionGoldPageActivity",
+      "short": "RetentionGoldPageActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.websubsmanagement.ui.WebSubscriptionManagementActivity",
+      "short": "WebSubscriptionManagementActivity",
+      "exported": "false",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.cancellationminiapp.SubscriptionCancellationMiniAppActivity",
+      "short": "SubscriptionCancellationMiniAppActivity",
+      "exported": "false",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.credits.CreditsDragDropAnimationActivity",
+      "short": "CreditsDragDropAnimationActivity",
+      "exported": "false",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.teaser.ui.TeaserScreenActivity",
+      "short": "TeaserScreenActivity",
+      "exported": "false",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.upsell.ui.UpsellScreenActivity",
+      "short": "UpsellScreenActivity",
+      "exported": "false",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.trialonboarding.ui.TrialOnboardingActivity",
+      "short": "TrialOnboardingActivity",
+      "exported": "false",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.trialcreditsinfo.ui.TrialCreditsInfoActivity",
+      "short": "TrialCreditsInfoActivity",
+      "exported": "false",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.credits.AiCreditInfoPageActivity",
+      "short": "AiCreditInfoPageActivity",
+      "exported": "false",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.credits.history.CreditHistoryActivity",
+      "short": "CreditHistoryActivity",
+      "exported": "false",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.bluefooted.SubscriptionBfbScreenActivity",
+      "short": "SubscriptionBfbScreenActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.transformable.SubscriptionOfferHalfScreenActivity",
+      "short": "SubscriptionOfferHalfScreenActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.transformable.SubscriptionOfferTierHalfScreenActivity",
+      "short": "SubscriptionOfferTierHalfScreenActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.HalfOfferBaseActivity",
+      "short": "HalfOfferBaseActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.SubscriptionFullScreenVideoActivity",
+      "short": "SubscriptionFullScreenVideoActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.SubscriptionOfferActivity",
+      "short": "SubscriptionOfferActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.profileminiapp.accountdetails.EditProfileDetailsMiniAppActivity",
+      "short": "EditProfileDetailsMiniAppActivity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.shake.ShakeMiniAppActivity",
+      "short": "ShakeMiniAppActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.SubscriptionOfferMiniAppActivity",
+      "short": "SubscriptionOfferMiniAppActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.SubscriptionPerksMiniAppActivity",
+      "short": "SubscriptionPerksMiniAppActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.SubscriptionReferralsMiniAppActivity",
+      "short": "SubscriptionReferralsMiniAppActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.ads.OfferReplaceInterstitialActivity",
+      "short": "OfferReplaceInterstitialActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.onboarding.PreSubscriptionActivity",
+      "short": "PreSubscriptionActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.snapchat.kit.sdk.SnapKitActivity",
+      "short": "SnapKitActivity",
+      "exported": "true",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "picsart",
+          "host": "snapchat",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.social.hashtags.ui.main.HashtagActivity",
+      "short": "HashtagActivity",
+      "exported": "",
+      "area": "Social (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.createflow.dolphin3.presenter.CFAlbumChooserActivity",
+      "short": "CFAlbumChooserActivity",
+      "exported": "",
+      "area": "Creazione guidata",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.home.tutorial.HomeTutorialActivity",
+      "short": "HomeTutorialActivity",
+      "exported": "",
+      "area": "Onboarding",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.onboarding.SubscriptionOnBoardingActivity",
+      "short": "SubscriptionOnBoardingActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.subscription.limitation.DeviceLimitationActivity",
+      "short": "DeviceLimitationActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.editor.tool.text2image.Text2ImageActivity",
+      "short": "Text2ImageActivity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.editor.tool.miniapp.miniappActivity.MiniAppActivity",
+      "short": "MiniAppActivity",
+      "exported": "false",
+      "area": "Mini-app (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.editor.miniapp2editor.MiniApp2EditorActivity",
+      "short": "MiniApp2EditorActivity",
+      "exported": "false",
+      "area": "Mini-app (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.hop.impl.presentation.HopMiniappLauncherActivity",
+      "short": "HopMiniappLauncherActivity",
+      "exported": "false",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.growth.onboardiq.impl.presentation.OnboardIqActivity",
+      "short": "OnboardIqActivity",
+      "exported": "false",
+      "area": "Onboarding",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.pinterest.PinterestAuthActivity",
+      "short": "PinterestAuthActivity",
+      "exported": "true",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "picsart",
+          "host": "pinterest_oauth",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.discovery.impl.ui.pills.details.DiscoverPillDetailsActivity",
+      "short": "DiscoverPillDetailsActivity",
+      "exported": "false",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.home.SocialFeedActivity",
+      "short": "SocialFeedActivity",
+      "exported": "false",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.home.simplefeed.SimpleFeedActivity",
+      "short": "SimpleFeedActivity",
+      "exported": "false",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.growth.onboardiq.impl.swipeexperience.SwipeVibeActivity",
+      "short": "SwipeVibeActivity",
+      "exported": "false",
+      "area": "Onboarding",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.growth.featureonboarding.impl.FeatureOnboardingActivity",
+      "short": "FeatureOnboardingActivity",
+      "exported": "false",
+      "area": "Onboarding",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.detection.ui.info.DetectionInfoActivity",
+      "short": "DetectionInfoActivity",
+      "exported": "",
+      "area": "Informazioni / dialoghi",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.share.SharePlatformActivity",
+      "short": "SharePlatformActivity",
+      "exported": "",
+      "area": "Export / condivisione",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.share.ShareMiniAppActivity",
+      "short": "ShareMiniAppActivity",
+      "exported": "",
+      "area": "Export / condivisione",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.share.watermark.SquareFitShareActivity",
+      "short": "SquareFitShareActivity",
+      "exported": "",
+      "area": "Export / condivisione",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.growth.intentonboarding.impl.presentation.IntentBasedOnboardingActivity",
+      "short": "IntentBasedOnboardingActivity",
+      "exported": "false",
+      "area": "Onboarding",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.create.selection.ui.SelectPackageActivity",
+      "short": "SelectPackageActivity",
+      "exported": "",
+      "area": "Creazione guidata",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.shopNew.activity.ShopItemPreviewDialogActivity",
+      "short": "ShopItemPreviewDialogActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.shopNew.activity.ShopItemListActivity",
+      "short": "ShopItemListActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.shopNew.activity.ShopBrowseItemActivity",
+      "short": "ShopBrowseItemActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.userProjects.internal.UserProjectsActivity",
+      "short": "UserProjectsActivity",
+      "exported": "",
+      "area": "Progetti",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.userProjects.internal.cloudProject.commenting.SharedWithMeItemActivity",
+      "short": "SharedWithMeItemActivity",
+      "exported": "",
+      "area": "Progetti",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.premium.packagelist.PremiumPackageListActivity",
+      "short": "PremiumPackageListActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.premium.preview.PremiumPackagePreviewActivity",
+      "short": "PremiumPackagePreviewActivity",
+      "exported": "",
+      "area": "Abbonamento (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.chooser.sizepresets.SizePresetsActivity",
+      "short": "SizePresetsActivity",
+      "exported": "",
+      "area": "Libreria / importazione",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.chooser.ChooserActivity",
+      "short": "ChooserActivity",
+      "exported": "",
+      "area": "Libreria / importazione",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.oauth2.InstagramAuthActivity",
+      "short": "InstagramAuthActivity",
+      "exported": "false",
+      "area": "Editor (superficie principale)",
+      "actions": [
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "picsart",
+          "host": "instagram_oauth",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.colorPicker.HexCodeInsertionActivity",
+      "short": "HexCodeInsertionActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.growth.launchorder.impl.LaunchOrderActivity",
+      "short": "LaunchOrderActivity",
+      "exported": "",
+      "area": "Onboarding",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.analytics.debug.components.experiments.AnalyticsSettingsActivity",
+      "short": "AnalyticsSettingsActivity",
+      "exported": "false",
+      "area": "Telemetria (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.analytics.debug.components.experiments.CountryCodeSelectionActivity",
+      "short": "CountryCodeSelectionActivity",
+      "exported": "",
+      "area": "Telemetria (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.analytics.settings.preview.ui.PAPreviewActivity",
+      "short": "PAPreviewActivity",
+      "exported": "true",
+      "area": "Telemetria (fuori perimetro)",
+      "actions": [
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "picsart",
+          "host": "pulse",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.linecorp.linesdk.openchat.ui.CreateOpenChatActivity",
+      "short": "CreateOpenChatActivity",
+      "exported": "",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.linecorp.linesdk.auth.internal.LineAuthenticationActivity",
+      "short": "LineAuthenticationActivity",
+      "exported": "false",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.linecorp.linesdk.auth.internal.LineAuthenticationCallbackActivity",
+      "short": "LineAuthenticationCallbackActivity",
+      "exported": "true",
+      "area": "Account",
+      "actions": [
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "lineauth",
+          "host": "",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.kakao.sdk.user.ShippingAddressesHandlerActivity",
+      "short": "ShippingAddressesHandlerActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.kakao.sdk.auth.TalkAuthCodeActivity",
+      "short": "TalkAuthCodeActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.kakao.sdk.auth.AppsHandlerActivity",
+      "short": "AppsHandlerActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.studio.internal.ExceptionActivity",
+      "short": "ExceptionActivity",
+      "exported": "",
+      "area": "Editor (superficie principale)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.clevertap.android.sdk.InAppNotificationActivity",
+      "short": "InAppNotificationActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.clevertap.android.sdk.inbox.CTInboxActivity",
+      "short": "CTInboxActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.facebook.CustomTabMainActivity",
+      "short": "CustomTabMainActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.facebook.CustomTabActivity",
+      "short": "CustomTabActivity",
+      "exported": "true",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "fbconnect",
+          "host": "cct.com.picsart.studio",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "com.google.android.gms.auth.api.signin.internal.SignInHubActivity",
+      "short": "SignInHubActivity",
+      "exported": "false",
+      "area": "Account",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.adview.AppLovinFullscreenActivity",
+      "short": "AppLovinFullscreenActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.adview.AppLovinFullscreenImmersiveActivity",
+      "short": "AppLovinFullscreenImmersiveActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.sdk.AppLovinWebViewActivity",
+      "short": "AppLovinWebViewActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerActivity",
+      "short": "MaxDebuggerActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerDetailActivity",
+      "short": "MaxDebuggerDetailActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerMultiAdActivity",
+      "short": "MaxDebuggerMultiAdActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerAdUnitsListActivity",
+      "short": "MaxDebuggerAdUnitsListActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerAdUnitWaterfallsListActivity",
+      "short": "MaxDebuggerAdUnitWaterfallsListActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerAdUnitDetailActivity",
+      "short": "MaxDebuggerAdUnitDetailActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerCmpNetworksListActivity",
+      "short": "MaxDebuggerCmpNetworksListActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerTcfConsentStatusesListActivity",
+      "short": "MaxDebuggerTcfConsentStatusesListActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerTcfInfoListActivity",
+      "short": "MaxDebuggerTcfInfoListActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerTcfStringActivity",
+      "short": "MaxDebuggerTcfStringActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerTestLiveNetworkActivity",
+      "short": "MaxDebuggerTestLiveNetworkActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerTestModeNetworkActivity",
+      "short": "MaxDebuggerTestModeNetworkActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerUnifiedFlowActivity",
+      "short": "MaxDebuggerUnifiedFlowActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerWaterfallSegmentsActivity",
+      "short": "MaxDebuggerWaterfallSegmentsActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.mediation.MaxDebuggerAxonEventsListActivity",
+      "short": "MaxDebuggerAxonEventsListActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.creative.MaxCreativeDebuggerActivity",
+      "short": "MaxCreativeDebuggerActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.applovin.creative.MaxCreativeDebuggerDisplayedAdActivity",
+      "short": "MaxCreativeDebuggerDisplayedAdActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.inmobi.ads.rendering.InMobiAdActivity",
+      "short": "InMobiAdActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.inmobi.ads.rendering.InMobiInAppBrowserActivity",
+      "short": "InMobiInAppBrowserActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.android.billingclient.api.ProxyBillingActivity",
+      "short": "ProxyBillingActivity",
+      "exported": "false",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.android.billingclient.api.ProxyBillingActivityV2",
+      "short": "ProxyBillingActivityV2",
+      "exported": "false",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.unity3d.services.ads.adunit.AdUnitActivity",
+      "short": "AdUnitActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.unity3d.services.ads.adunit.AdUnitTransparentActivity",
+      "short": "AdUnitTransparentActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.unity3d.services.ads.adunit.AdUnitTransparentSoftwareActivity",
+      "short": "AdUnitTransparentSoftwareActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.unity3d.services.ads.adunit.AdUnitSoftwareActivity",
+      "short": "AdUnitSoftwareActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.unity3d.ads.adplayer.FullScreenWebViewDisplay",
+      "short": "FullScreenWebViewDisplay",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.google.android.gms.common.api.GoogleApiActivity",
+      "short": "GoogleApiActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.google.android.gms.ads.OutOfContextTestingActivity",
+      "short": "OutOfContextTestingActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.google.android.gms.ads.NotificationHandlerActivity",
+      "short": "NotificationHandlerActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.vk.api.sdk.ui.VKWebViewAuthActivity",
+      "short": "VKWebViewAuthActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.vk.api.sdk.ui.VKCaptchaActivity",
+      "short": "VKCaptchaActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.vk.api.sdk.ui.VKConfirmationActivity",
+      "short": "VKConfirmationActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.vungle.ads.internal.ui.VungleActivity",
+      "short": "VungleActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.picsart.jedi.presentation.deeplink.AuthActivity",
+      "short": "AuthActivity",
+      "exported": "true",
+      "area": "Deeplink / ingresso",
+      "actions": [
+        "android.intent.action.VIEW"
+      ],
+      "deeplinks": [
+        {
+          "scheme": "https",
+          "host": "picsart.com",
+          "path": ""
+        }
+      ],
+      "authorities": ""
+    },
+    {
+      "class": "androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity",
+      "short": "InstrumentationActivityInvoker$BootstrapActivity",
+      "exported": "true",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity",
+      "short": "InstrumentationActivityInvoker$EmptyActivity",
+      "exported": "true",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity",
+      "short": "InstrumentationActivityInvoker$EmptyFloatingActivity",
+      "exported": "true",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.google.android.play.agesignals.AgeSharingConsentWrapperActivity",
+      "short": "AgeSharingConsentWrapperActivity",
+      "exported": "false",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.facebook.ads.AudienceNetworkActivity",
+      "short": "AudienceNetworkActivity",
+      "exported": "false",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.ironsource.sdk.controller.ControllerActivity",
+      "short": "ControllerActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.ironsource.sdk.controller.InterstitialActivity",
+      "short": "InterstitialActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.ironsource.sdk.controller.OpenUrlActivity",
+      "short": "OpenUrlActivity",
+      "exported": "",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.unity3d.ironsourceads.internal.services.InlineStoreActivity",
+      "short": "InlineStoreActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.ironsource.mediationsdk.testSuite.TestSuiteActivity",
+      "short": "TestSuiteActivity",
+      "exported": "false",
+      "area": "Pubblicità (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.amazon.aps.ads.activity.ApsInterstitialActivity",
+      "short": "ApsInterstitialActivity",
+      "exported": "true",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.amazon.device.ads.DTBInterstitialActivity",
+      "short": "DTBInterstitialActivity",
+      "exported": "true",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.amazon.device.ads.DTBAdActivity",
+      "short": "DTBAdActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.google.android.play.core.common.PlayCoreDialogWrapperActivity",
+      "short": "PlayCoreDialogWrapperActivity",
+      "exported": "false",
+      "area": "Altro",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.fyber.inneractive.sdk.activities.InneractiveInternalBrowserActivity",
+      "short": "InneractiveInternalBrowserActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.fyber.inneractive.sdk.activities.InneractiveFullscreenAdActivity",
+      "short": "InneractiveFullscreenAdActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.fyber.inneractive.sdk.activities.InneractiveRichMediaVideoPlayerActivityCore",
+      "short": "InneractiveRichMediaVideoPlayerActivityCore",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.fyber.inneractive.sdk.activities.InternalStoreWebpageActivity",
+      "short": "InternalStoreWebpageActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    },
+    {
+      "class": "com.fyber.inneractive.sdk.activities.FyberReportAdActivity",
+      "short": "FyberReportAdActivity",
+      "exported": "",
+      "area": "SDK terzi (fuori perimetro)",
+      "actions": [],
+      "deeplinks": [],
+      "authorities": ""
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+# Build
+target/
+**/*.rs.bk
+*.pdb
+
+# Artefatti di terzi: l'estrazione dell'APK usata come specifica funzionale.
+# Non è codice del progetto e non deve stare nel repository.
+_estrazione/
+
+# File di progetto generati durante i test manuali
+*.pizzart
+export_demo.jpg
+export_demo.webp
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

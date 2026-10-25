@@ -1,0 +1,15 @@
+[package]
+name = "pizzart-draw"
+description = "Motore di disegno: pressione, tilt, spazzole procedurali, stabilizzazione, stampa dei tratti su CPU."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+# CPU-first: nessuna dipendenza GPU in questo crate. Il renderer dei tratti
+# arriverà in `pizzart-render` quando l'API qui sarà stabile e testata.
+[dependencies]
+pizzart-core = { path = "../core" }
+
+[dev-dependencies]
+# Solo per l'esempio: scrivere il PNG di prova. Non entra nel crate.
+image = { version = "0.25", default-features = false, features = ["png"] }

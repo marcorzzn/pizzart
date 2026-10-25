@@ -1,0 +1,14 @@
+[package]
+name = "pizzart-text"
+description = "Testo: registro font, layout, rasterizzazione CPU in una tessera (PlacedImage)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+# CPU-first come il motore di disegno: nessuna dipendenza GPU.
+# cosmic-text fornisce shaping (kerning, legature, script complessi), BiDi,
+# fallback dei glifi e rasterizzazione via swash: reinventarli sarebbe
+# il modo più rapido per avere un motore di testo peggiore.
+[dependencies]
+pizzart-core = { path = "../core" }
+cosmic-text = "0.12"

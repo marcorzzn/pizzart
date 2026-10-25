@@ -1,0 +1,30 @@
+[package]
+name = "pizzart-ui"
+description = "UI MVP dell'editor: canvas, pannelli layer, effetti, strumenti."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "pizzart-ui"
+path = "src/main.rs"
+
+[dependencies]
+pizzart-core = { path = "../core" }
+pizzart-render = { path = "../render" }
+pizzart-draw = { path = "../draw" }
+pizzart-text = { path = "../text" }
+pizzart-io = { path = "../io" }
+pizzart-project = { path = "../project" }
+
+# Backend `glow` (OpenGL) e non `wgpu`: il renderer del motore usa wgpu 23, e
+# farsi carico di una seconda versione di wgpu solo per disegnare i widget
+# sarebbe centinaia di MB di compilazione per nulla. egui non ha bisogno di wgpu.
+eframe = { version = "0.29", default-features = false, features = ["glow", "default_fonts"] }
+egui = "0.29"
+
+# Dialoghi nativi per aprire e salvare file.
+rfd = "0.15"
+
+# Decodifica delle immagini da aprire come layer.
+image = { version = "0.25", default-features = false, features = ["png", "jpeg"] }

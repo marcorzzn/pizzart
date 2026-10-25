@@ -1,0 +1,22 @@
+[package]
+name = "pizzart-io"
+description = "Esportazione: codifica un'immagine composta in PNG, JPEG o WebP."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+pizzart-render = { path = "../render" }
+# L'encoder PNG serve sempre; JPEG e WebP sono dietro feature per non pagare
+# il costo in build che non li usano.
+image = { version = "0.25", default-features = false, features = ["png", "jpeg"] }
+
+[features]
+default = []
+webp = ["image/webp"]
+
+# Solo per gli esempi: l'esportazione riceve un'immagine già composta e non
+# deve sapere cosa siano un documento, un layer o un font.
+[dev-dependencies]
+pizzart-core = { path = "../core" }
+pizzart-text = { path = "../text" }

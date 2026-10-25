@@ -1,0 +1,9 @@
+[package]
+name = "pizzart-core"
+description = "Documento, layer, trasformazioni, blend modes, undo/redo. Rust puro, nessuna GPU."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+# Nessuna dipendenza esterna: il core si compila e si testa offline, su qualsiasi host.
+[dependencies]

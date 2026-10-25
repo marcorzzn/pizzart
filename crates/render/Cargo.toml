@@ -1,0 +1,23 @@
+[package]
+name = "pizzart-render"
+description = "Renderer wgpu: compositing GPU dei layer, con gli stessi 12 blend modes del core."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+pizzart-core = { path = "../core" }
+# wgpu è l'unica dipendenza pesante del progetto: serve per parlare con la GPU.
+# Si usano le feature di default (dx12, metal, wgsl, webgpu): senza almeno un
+# backend il crate compila ma non ha nessun driver con cui parlare, e interrogarli
+# finisce in access violation. Per Linux/CI aggiungere "vulkan-portability".
+wgpu = "23"
+bytemuck = { version = "1", features = ["derive"] }
+
+[dev-dependencies]
+# Solo per i test di parità e per gli esempi: il crate non dipende dal motore
+# di disegno, è l'integrazione a farlo (un buffer RGBA8 è un buffer RGBA8).
+pizzart-draw = { path = "../draw" }
+# Il testo produce PlacedImage: stesso contratto, nessuna dipendenza nel crate.
+pizzart-text = { path = "../text" }
+image = { version = "0.25", default-features = false, features = ["png"] }
